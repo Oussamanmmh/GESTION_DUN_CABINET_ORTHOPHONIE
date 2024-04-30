@@ -1,0 +1,12 @@
+package com.example.demo.models;
+
+public enum CathegoriesEnf {
+    STRUCTURE_FAMILIALE ,
+    DYNAMIQUE_FAMILIALE ,
+    ANTYCIDENT_FAMILIALE,
+    CONDITION_NATALE ,
+    DEVELOPEMENT_PSYCOMOTEUR ,
+    DEVLOPEMENT_LANGAGIER ,
+    CARATERE ,
+    COMPORTENENT ,
+}
