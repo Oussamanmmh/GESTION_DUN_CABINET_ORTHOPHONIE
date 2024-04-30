@@ -1,4 +1,13 @@
 package com.example.demo.models;
 
-public class TestQCM extends Test{
+import java.util.Set;
+import java.util.HashSet;
+
+public class TestQCM extends TestQuestionnaire{
+
+    public TestQCM( Set<Qcm> questions) {
+        super.questions = new HashSet<Qcm>(questions);
+
+
+    }
 }
