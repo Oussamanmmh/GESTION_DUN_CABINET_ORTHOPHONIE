@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="487.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller=" com.example.demo.ListPatientController">
+   <children>
+      <TableView layoutY="150.0" prefHeight="338.0" prefWidth="266.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Nom" />
+          <TableColumn prefWidth="75.0" text="Prenom" />
+            <TableColumn prefWidth="114.00001525878906" text="Date de naissance" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

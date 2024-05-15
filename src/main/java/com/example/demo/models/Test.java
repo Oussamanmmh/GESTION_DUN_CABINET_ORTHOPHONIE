@@ -3,7 +3,7 @@ package com.example.demo.models;
 public abstract class Test { //la note de test comprise entre 1 et 10
     private String nom ;
     private String capacite ;
-    protected String observation ;
+    protected String observation ; // conclusion redige n
 
     public abstract double calculerScore();
 

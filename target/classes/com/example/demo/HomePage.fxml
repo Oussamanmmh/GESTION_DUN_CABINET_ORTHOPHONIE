@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.HomePageController">
+   <children>
+      <AnchorPane layoutX="83.0" layoutY="247.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
+         <children>
+            <Label layoutX="15.0" layoutY="66.0" text="Satistiques" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/stat.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="83.0" layoutY="110.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
+         <children>
+            <Label layoutX="26.0" layoutY="66.0" text="Options" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="48.0" fitWidth="47.0" layoutX="34.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/options.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="390.0" layoutY="247.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
+         <children>
+            <Label layoutX="33.0" layoutY="66.0" text="Quitter" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="34.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/switch.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="232.0" layoutY="247.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
+         <children>
+            <Label layoutX="9.0" layoutY="67.0" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="26.0" layoutY="67.0" text="Compte" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="30.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/profile.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane fx:id="linkPatients" layoutX="232.0" layoutY="110.0" onMouseClicked="#gotoListPatients" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);" styleClass="hoverPan">
+         <children>
+            <Label layoutX="30.0" layoutY="66.0" text="Patients" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="30.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/patient_1988784.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="34.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/patients.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <AnchorPane layoutX="390.0" layoutY="110.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
+         <children>
+            <Label layoutX="27.0" layoutY="66.0" text="Agenda" textFill="#fffbfb">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/agenda.png" />
+               </image>
+            </ImageView>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </AnchorPane>
+      <ImageView fitHeight="55.0" fitWidth="55.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/pageacceuil.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="100.0" layoutY="20.0" style="-fx-font-weight: bold; -fx-font-family: &quot;Arial&quot;, sans-serif; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);" text="page d'accueil">
+         <font>
+            <Font size="36.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Label>
+   </children>
+</AnchorPane>

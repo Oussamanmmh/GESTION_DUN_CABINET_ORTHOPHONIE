@@ -10,13 +10,30 @@ public abstract class Patient {
     protected Date dateNaissance;
 
     protected String lieuNaissance;
-    protected String adresse;
+    protected String adress;
 
     protected List<Trouble> troubles;
 
     protected  String DecriptionTherapie; //description de la therapie
 
     //protected List<BilanOrt> bilansOrt; //liste des bilans orthophoniques sur le patient
+
+   public Patient(String nom, String prenom, Date dateNaissance, String lieuNaissance, String adress) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.dateNaissance = dateNaissance;
+        this.lieuNaissance = lieuNaissance;
+        this.adress = adress;
+    }
+
+
+    //public List<BilanOrt> getBilansOrt() {
+    //    return bilansOrt;
+    //}
+
+    //public void setBilansOrt(List<BilanOrt> bilansOrt) {
+    //    this.bilansOrt = bilansOrt;
+    //}
 
 
 
