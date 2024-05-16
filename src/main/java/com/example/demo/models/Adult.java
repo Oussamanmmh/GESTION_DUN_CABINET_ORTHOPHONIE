@@ -25,10 +25,7 @@ public class Adult extends Patient {
     {
         return this.adress ;
     }
-    public String getDeplome()
-    {
-        return this.diplome ;
-    }
+
     public String getProfession()
     {
         return this.profession ;
@@ -37,14 +34,17 @@ public class Adult extends Patient {
     {
         return this.numTel ;
     }
-    public String getLieuDeNaissance()
+    public String getLieuNaissance()
     {
         return this.lieuNaissance ;
     }
-    public Date getDateDeNaissance()
+    public Date getDateNaissance()
     {
         return this.dateNaissance ;
     }
 
 
+    public String getDiplome() {
+        return diplome;
+    }
 }
