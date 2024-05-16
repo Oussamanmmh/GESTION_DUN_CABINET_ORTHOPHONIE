@@ -49,7 +49,7 @@ public class ListdespatientsController implements Initializable {
     @FXML
     TableColumn<Adult , String> diplome ;
     @FXML
-    TableColumn<Adult , String> datedenaissance ;
+    TableColumn<Adult , Date> datedenaissance ;
     @FXML
     TableColumn<Adult , String> lieudenaissance ;
 
@@ -78,15 +78,14 @@ public class ListdespatientsController implements Initializable {
 
 
     ObservableList<Adult> list = FXCollections.observableArrayList(
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789"),
-            new Adult("oussama" , "nemamcha" , "admin" , new Date() , "alger","ingénieur" , "ingénieur" , "123456789")
+           new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("mouhamed" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892") ,
+                new Adult("oussama" , "nemamcha" , "alger" , new Date() , "alger" , "licence" , "etudiant" , "093892")
     );
 
     @Override
@@ -97,10 +96,10 @@ public class ListdespatientsController implements Initializable {
        nom.setCellValueFactory(new PropertyValueFactory<Adult, String>("nom"));
       prenom.setCellValueFactory(new PropertyValueFactory<Adult, String>("prenom"));
         adress.setCellValueFactory(new PropertyValueFactory<Adult, String>("adress"));
-      tel.setCellValueFactory(new PropertyValueFactory<Adult, String>(" numTel"));
+      tel.setCellValueFactory(new PropertyValueFactory<Adult, String>("numTel"));
         profession.setCellValueFactory(new PropertyValueFactory<Adult, String>("profession"));
-        diplome.setCellValueFactory(new PropertyValueFactory<Adult, String>(" diplome"));
-       datedenaissance.setCellValueFactory(new PropertyValueFactory<Adult, String>("dateNaissance"));
+        diplome.setCellValueFactory(new PropertyValueFactory<Adult, String>("diplome"));
+        datedenaissance.setCellValueFactory(new PropertyValueFactory<Adult, Date>("dateNaissance"));
      lieudenaissance.setCellValueFactory(new PropertyValueFactory<Adult, String>("lieuNaissance"));
 
 
