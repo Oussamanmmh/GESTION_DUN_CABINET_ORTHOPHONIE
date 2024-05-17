@@ -26,7 +26,9 @@
                </font>
             </Label>
          </children>
+
       </Pane>
+
       <TextField fx:id="emailField" layoutX="407.0" layoutY="139.0" prefHeight="29.0" prefWidth="191.0" promptText="Email" style="-fx-border-width: 0 0 0 0; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
          <font>
             <Font size="14.0" />
