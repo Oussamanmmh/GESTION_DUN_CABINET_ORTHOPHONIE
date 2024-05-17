@@ -7,24 +7,27 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane focusTraversable="true" onMouseClicked="#retourPageAc" prefHeight="623.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ListdespatientsController">
    <children>
-      <ImageView fx:id="retourHomepage" fitHeight="60.0" fitWidth="48.0" layoutX="14.0" layoutY="14.0" onMouseClicked="#retourPageAc" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="retourHomepage" fitHeight="20.0" fitWidth="20.0" layoutX="4.0" layoutY="9.0" onMouseClicked="#retourPageAc" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/flesh.png" />
+            <Image url="@assets/arrow.png" />
          </image>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="linkHomePage" alignment="CENTER" layoutX="62.0" layoutY="19.0" onMouseClicked="#retourPageAc" prefHeight="38.0" prefWidth="99.0" style="-fx-font-weight: bold;" text="Retour">
+      <Label fx:id="linkHomePage" alignment="CENTER" onMouseClicked="#retourPageAc" prefHeight="38.0" prefWidth="107.0" style="-fx-font-weight: bold;" text="Retour">
          <font>
-            <Font size="26.0" />
+            <Font size="18.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -51,31 +54,48 @@
             </TableView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="278.0" layoutY="19.0" prefHeight="48.0" prefWidth="196.0" style="-fx-background-color: gray; -fx-background-radius: 10;">
-         <children>
-            <Label layoutX="14.0" layoutY="14.0" style="-fx-font-weight: bold;" text="Supprimer patient">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-      <JFXButton fx:id="ajouterpatient" buttonType="RAISED" layoutX="594.0" layoutY="19.0" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: #dddddd; -fx-background-radius: 12;" text="Ajouter patient" textOverrun="CLIP">
+      <JFXButton fx:id="ajouterpatient" buttonType="RAISED" layoutX="557.0" layoutY="19.0" onAction="#ajouterPatient" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #dddddd; -fx-background-radius: 12;" text="Ajouter patient" textOverrun="CLIP">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <padding>
+            <Insets right="4.0" />
+         </padding>
+      </JFXButton>
+      <JFXButton fx:id="supprimerpatient" buttonType="RAISED" layoutX="557.0" layoutY="140.0" onAction="#supprimerPatient" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: red; -fx-background-radius: 12;" text="Supprimer patient" textOverrun="CLIP">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <padding>
             <Insets right="33.0" />
          </padding>
+         <effect>
+            <DropShadow height="5.84" offsetX="10.0" offsetY="10.0" radius="12.1525" spread="0.75" width="44.77">
+               <color>
+                  <Color red="0.359649121761322" green="0.359649121761322" blue="0.359649121761322" />
+               </color>
+            </DropShadow>
+         </effect>
       </JFXButton>
-      <JFXButton fx:id="supprimerpatient" buttonType="RAISED" layoutX="594.0" layoutY="116.0" prefHeight="48.0" prefWidth="144.0" style="-fx-background-color: red; -fx-background-radius: 12;" text="Supprimer patient" textOverrun="CLIP">
+      <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="713.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/plus.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="26.0" layoutX="713.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/remove.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="ajouterpatient1" buttonType="RAISED" layoutX="557.0" layoutY="81.0" onAction="#ajouterPatient" prefHeight="48.0" prefWidth="181.0" style="-fx-background-color: #dddddd; -fx-background-radius: 12;" text="Modifier les information " textOverrun="CLIP">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
          <padding>
-            <Insets right="33.0" />
+            <Insets right="4.0" />
          </padding>
       </JFXButton>
+      <TextField fx:id="rechercheField" layoutX="178.0" layoutY="165.0" prefHeight="25.0" prefWidth="302.0" promptText="Recherche d'un patient" />
    </children>
    <cursor>
       <Cursor fx:constant="HAND" />

@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.models.*;
+import com.jfoenix.controls.JFXButton;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
@@ -34,6 +32,8 @@ public class ListdespatientsController implements Initializable {
   @FXML
    private ChoiceBox<String> MychoiceBox ;
   @FXML
+  JFXButton supprimerpatient ;
+  @FXML
     TableView<Adult> adulttable ;
    @FXML
     TableColumn<Adult , String> nom ;
@@ -52,7 +52,8 @@ public class ListdespatientsController implements Initializable {
     TableColumn<Adult , Date> datedenaissance ;
     @FXML
     TableColumn<Adult , String> lieudenaissance ;
-
+   @FXML
+   JFXButton ajouterpatient ;
 
 
 
@@ -105,6 +106,69 @@ public class ListdespatientsController implements Initializable {
 
         adulttable.setItems(list);
     }
+
+    //pour ajouter un patient
+    public void ajouterPatient(ActionEvent event) {
+        System.out.println("clicked clicked");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("DialogueAjouterPatient.fxml"));
+
+        try {
+            DialogPane dialogePatient  = fxmlLoader.load();
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.setDialogPane(dialogePatient);
+            dialog.setTitle("Ajouter un patient");
+            dialog.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.APPLY) {
+
+                    DialogueAjouterPatientController dlg  =  fxmlLoader.getController();
+                    dlg.applyButtonAction();
+                    list.add((Adult) dlg.getPatient()) ;
+                    adulttable.setItems(list) ;
+                } else if (response == ButtonType.CANCEL) {
+
+                    System.out.println("Cancel button pressed");
+                }
+            });
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+            System.out.println("erreur");
+        }
+
+        //showing the dialoge for the user
+
+
+    }
+
+
+    public void supprimerPatient (ActionEvent event){
+        if (!list.isEmpty() && adulttable.getSelectionModel().getSelectedIndex() != -1 ){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Voulez-vous vraiment supprimer ce patient ?");
+            alert.setContentText("Appuyez sur OK pour confirmer, sinon appuyez sur Annuler.");
+            alert.showAndWait().ifPresent(response -> {
+                if (response == ButtonType.OK) {
+                    System.out.println("OK button pressed");
+                    int index = adulttable.getSelectionModel().getSelectedIndex();
+                    System.out.println("index = " + index);
+                    list.remove(index);
+                    adulttable.setItems(list);
+                } else if (response == ButtonType.CANCEL) {
+                    System.out.println("Cancel button pressed");
+                }
+            });
+
+
+        }
+        else {
+            System.out.println("la liste est vide");
+        }
+    }
+
+
+
 }
 
 
