@@ -1,83 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:id="pan" prefHeight="330.0" prefWidth="614.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AgendaController">
+<AnchorPane prefHeight="505.0" prefWidth="577.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AgendaController">
    <children>
-      <DatePicker layoutX="354.0" layoutY="39.0" promptText="Choisissez la date" />
-      <VBox layoutY="62.0" prefHeight="274.0" prefWidth="149.0" style="-fx-background-color: CAF4FF;">
+      <DatePicker layoutX="163.0" layoutY="50.0" prefHeight="25.0" prefWidth="273.0" promptText="Choisissez la date de rendz-vous" />
+      <ComboBox fx:id="hours" layoutX="152.0" layoutY="117.0" prefHeight="25.0" prefWidth="71.0" />
+      <ComboBox fx:id="minutes" layoutX="264.0" layoutY="117.0" prefHeight="25.0" prefWidth="71.0" />
+      <ComboBox fx:id="time" layoutX="368.0" layoutY="117.0" prefHeight="25.0" prefWidth="71.0" />
+      <AnchorPane fx:id="Mypan" layoutX="94.0" layoutY="239.0" prefHeight="241.0" prefWidth="411.0" style="-fx-border-color: black;">
          <children>
-            <JFXButton prefHeight="53.0" prefWidth="149.0" style="-fx-font-weight: bold; -fx-background-color: #A0DEFF;" text="Agenda">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Separator prefWidth="200.0" />
-            <JFXButton layoutX="10.0" layoutY="10.0" prefHeight="53.0" prefWidth="149.0" style="-fx-font-weight: bold;" text="Liste des patients">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Separator layoutX="10.0" layoutY="63.0" prefWidth="200.0" />
-            <JFXButton layoutX="10.0" layoutY="67.0" prefHeight="53.0" prefWidth="149.0" style="-fx-font-weight: bold;" text="Options">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Separator prefWidth="200.0" />
-            <JFXButton layoutX="10.0" layoutY="123.0" prefHeight="53.0" prefWidth="149.0" style="-fx-font-weight: bold;" text="Profile">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Separator prefWidth="200.0" />
-            <JFXButton layoutX="10.0" layoutY="177.0" prefHeight="49.0" prefWidth="149.0" style="-fx-font-weight: bold;" text="Quitter">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
-            <Separator layoutX="10.0" layoutY="120.0" prefWidth="200.0" />
-         </children>
-      </VBox>
-      <AnchorPane prefHeight="65.0" prefWidth="149.0" style="-fx-background-color: CAF4FF;">
-         <children>
-            <Label layoutX="19.0" layoutY="19.0" prefHeight="25.0" prefWidth="60.0" style="-fx-font-weight: bold;" text="Menu">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="92.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/menu.png" />
-               </image>
-            </ImageView>
-            <Separator layoutX="-1.0" layoutY="62.0" prefHeight="3.0" prefWidth="149.0" style="-fx-background-color: gray;" />
+            <VBox fx:id="Myvbox" layoutX="79.0" layoutY="14.0" prefHeight="200.0" prefWidth="253.0" />
          </children>
       </AnchorPane>
+      <ChoiceBox fx:id="MychoiceBox" layoutX="404.0" layoutY="184.0" prefHeight="25.0" prefWidth="95.0" />
+      <Label layoutX="94.0" layoutY="187.0" text="Veuillez choisir le type de rendez-vous     :">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
