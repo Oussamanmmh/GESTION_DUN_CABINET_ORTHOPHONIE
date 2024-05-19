@@ -4,6 +4,7 @@ module com.example.demo {
     requires java.sql;
     requires com.jfoenix;
     requires com.calendarfx.view;
+    requires ical4j.core;
 
 
     opens com.example.demo to javafx.fxml;

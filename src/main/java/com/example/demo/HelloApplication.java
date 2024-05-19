@@ -1,4 +1,5 @@
 package com.example.demo;
+import com.example.demo.models.AgendaIntegre;
 import com.example.demo.models.ApplicationDesktop;
 import com.example.demo.models.Orthophoniste;
 import javafx.application.Application;
@@ -19,12 +20,14 @@ import java.time.LocalTime;
 public class HelloApplication extends Application {
     public static ApplicationDesktop applicationDesktop ;
     public static Orthophoniste orthophoniste ;
+    public static AgendaIntegre agendaIntegre ;
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Agenda.fxml"));
         applicationDesktop = new ApplicationDesktop();
         orthophoniste = new Orthophoniste("oussama" , "nemamcha" , "admin" , "alger","093892", "123") ;
+        agendaIntegre = new AgendaIntegre();
         applicationDesktop.setOrthophoniste(orthophoniste);
         Scene scene = new Scene(fxmlLoader.load());
 
