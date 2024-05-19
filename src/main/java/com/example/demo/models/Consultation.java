@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import java.sql.Time;
 import java.time.Duration;
 
 public class Consultation extends RendezVous{
@@ -8,8 +9,9 @@ public class Consultation extends RendezVous{
     private String nomPatient ;
     private String prenomPatient ;
     private int agePatient ;
-    public  Consultation (int agePatient , String nomPatient , String prenomPatient)
+    public  Consultation (int agePatient , String nomPatient , String prenomPatient , String date , Time time)
     {
+        super(date , time);
         this.nomPatient = nomPatient ;
         this.prenomPatient = prenomPatient ;
 
