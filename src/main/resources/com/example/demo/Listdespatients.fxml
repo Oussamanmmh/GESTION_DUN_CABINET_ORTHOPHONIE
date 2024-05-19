@@ -40,7 +40,7 @@
       </ChoiceBox>
       <AnchorPane layoutY="210.0" prefHeight="417.0" prefWidth="729.0">
          <children>
-            <TableView fx:id="adulttable" layoutX="2.0" prefHeight="417.0" prefWidth="750.0">
+            <TableView fx:id="tablePatient" layoutX="2.0" prefHeight="417.0" prefWidth="750.0">
               <columns>
                 <TableColumn fx:id="nom" prefWidth="75.0" text="Nom" />
                 <TableColumn fx:id="prenom" prefWidth="75.0" text="Prenom" />

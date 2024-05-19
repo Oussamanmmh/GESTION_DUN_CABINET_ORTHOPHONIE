@@ -84,18 +84,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </AnchorPane>
-      <AnchorPane layoutX="390.0" layoutY="110.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
+      <AnchorPane layoutX="390.0" layoutY="-46.0" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);">
          <children>
             <Label layoutX="27.0" layoutY="66.0" text="Agenda" textFill="#fffbfb">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="26.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@assets/agenda.png" />
-               </image>
-            </ImageView>
          </children>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -128,6 +123,19 @@
       <ImageView fitHeight="42.0" fitWidth="56.0" layoutX="269.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assets/patients.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="gotoAgenda" layoutX="390.0" layoutY="108.0" onAction="#gotoAgenda" prefHeight="108.0" prefWidth="115.0" style="-fx-background-color: gray; -fx-background-radius: 10; -fx-border-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(100,100,0,0.3), 10, 0, 0, 10);" text="Patients">
+         <padding>
+            <Insets top="50.0" />
+         </padding>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="55.0" fitWidth="63.0" layoutX="420.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/agenda.png" />
          </image>
       </ImageView>
    </children>

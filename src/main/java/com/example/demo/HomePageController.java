@@ -22,13 +22,14 @@ public class HomePageController {
      AnchorPane quitterButton ;
     @FXML
      JFXButton linkPatients ;
+    @FXML
+    JFXButton gotoAgenda ;
     public void quiterButton (javafx.scene.input.MouseEvent mouseEvent) {
 
     }
 
 
     public void gotoListPatients(ActionEvent event) {
-        System.out.println("hello world ");
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Listdespatients.fxml"));
         try {
             scene = new Scene(fxmlLoader.load());
@@ -41,5 +42,24 @@ public class HomePageController {
         stage.setTitle("List patients");
         stage.setScene(scene);
         stage.show();
+    }
+    public void gotoAgenda(ActionEvent event) {
+        System.out.println("go to agenda");
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Agenda.fxml"));
+
+        try{
+          scene  = new Scene(fxmlLoader.load());
+        }
+        catch (IOException e){
+            e.printStackTrace();
+            System.out.println("Il ya une erreur");
+        }
+
+        JFXButton button = (JFXButton) event.getSource();
+        stage = (Stage) button.getScene().getWindow();
+        stage.setTitle("Agenda");
+        stage.setScene(scene);
+        stage.show();
+
     }
 }
