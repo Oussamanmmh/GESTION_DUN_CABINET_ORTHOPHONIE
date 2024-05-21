@@ -15,7 +15,7 @@ public class AgendaIntegre {
     public void addRendezVous(RendezVous rendezVous, String personne) throws IllegalArgumentException {
          try {
              System.out.println("helloe we have : " + rendezVous.getHeure().getHours() + "and" + rendezVous.getDate());
-             if (this.rendezVous.isEmpty()) this.rendezVous.add(rendezVous);
+             if (this.rendezVous.isEmpty()){ this.rendezVous.add(rendezVous); }
              else {
                  for (RendezVous r : this.rendezVous) {
 
@@ -50,11 +50,12 @@ public class AgendaIntegre {
                      }
 
                  }
+                 this.displayRDV();
+                 this.rendezVous.add(rendezVous);
+                 System.out.println("rendez-vous ajouter avec succes");
              }
 
-             this.displayRDV();
-             this.rendezVous.add(rendezVous);
-             System.out.println("rendez-vous ajouter avec succes");
+
          }
          catch (IllegalArgumentException e)
          {
