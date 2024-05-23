@@ -3,12 +3,12 @@ package com.example.demo.models;
 public class QuestionAnamEnfant extends Question {
     private String enonce;
 
-    private CathegoriesEnf cathegoriesEnf;
+    private CathegoriesEnf cathegorie;
 
     public QuestionAnamEnfant(String enonce, CathegoriesEnf cathegoriesEnf) {
         this.enonce = enonce;
 
-        this.cathegoriesEnf = cathegoriesEnf;
+        this.cathegorie = cathegoriesEnf;
     }
 
     public String getEnonce() {
@@ -16,7 +16,7 @@ public class QuestionAnamEnfant extends Question {
     }
 
 
-    public CathegoriesEnf getCathegoriesEnf() {
-        return cathegoriesEnf;
+    public CathegoriesEnf getCathegorie(){
+        return this.cathegorie ;
     }
 }

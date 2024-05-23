@@ -24,4 +24,24 @@ public class Exercice   {
     {
         return score ;
     }
+    public Exercice(String nomExercice , String consigne ){
+        this.nomExercice = nomExercice;
+        this.consigne = consigne;
+    }
+    public Exercice(String nomExercice , String consigne , String nomMateriel){
+        this.nomExercice = nomExercice;
+        this.consigne = consigne;
+        this.nomMateriel = nomMateriel;
+
+    }
+    public void setNomMateriel(String nom){
+        this.nomMateriel = nom;
+    }
+    public String getNomMateriel(){
+        return this.nomMateriel;
+    }
+    public String getConsigne(){
+        return this.consigne;
+    }
+
 }

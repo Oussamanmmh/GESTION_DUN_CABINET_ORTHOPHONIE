@@ -1,18 +1,35 @@
 package com.example.demo.models;
-import java.util.HashSet;
+import javafx.scene.Node;
+
+import java.util.ArrayList;
 import  java.util.List;
-import java.util.Set;
 
 public class AnamneseEnfant extends  Anamnese{
 
-    private Set<QuestionAnamEnfant> questionsEnfant; // liste des questions anamnese enfant des questions a reponse libre
+    private List<QuestionAnamEnfant> questions; // liste des questions anamnese enfant des questions a reponse libre
 
-    public Set <QuestionAnamEnfant> getQuestionsEnfant() {
-        return questionsEnfant;
+    public List <QuestionAnamEnfant> getQuestionsEnfant() {
+        return questions;
     }
 
-    public AnamneseEnfant(){
-        this.questionsEnfant = new HashSet<>();
+    private final String type = "Enfant";
+
+    public String getType() {
+        return type;
+    }
+
+
+
+
+    public List<QuestionAnamEnfant> getQuestions() {
+        return questions;
+    }
+    public  AnamneseEnfant(List<QuestionAnamEnfant> list)
+    {
+        this.questions = new ArrayList<>(list);
+    }
+    public void addQuestion(QuestionAnamEnfant question){
+        this.questions.add(question);
     }
 
 }

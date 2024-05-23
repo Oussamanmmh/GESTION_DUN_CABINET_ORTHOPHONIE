@@ -308,6 +308,7 @@ public class AgendaController implements Initializable {
 
     public void alertDisplay(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
         alert.setTitle("Error");
         alert.setContentText(message);
         alert.showAndWait();
