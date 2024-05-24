@@ -5,12 +5,16 @@ import java.util.List;
 
 public class Qcm extends Question2{
     // plusieurs reponses possible
+    private final String type = "QCM" ;
     private List<String> propositions ;//les propositions de la question
     private List<String> reponses ;// les reponses correctes
     private List<String> reponsesPatient ;// les reponses du patient
     public Qcm (String enonce , List<String> propositions ){
         super(enonce);
         this.propositions =  new ArrayList<>(propositions);
+    }
+    public String getType() {
+        return type;
     }
 
     public Qcm(String enonce, List<String> propositions, List<String> reponses) {

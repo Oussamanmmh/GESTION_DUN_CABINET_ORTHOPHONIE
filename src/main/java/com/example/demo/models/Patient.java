@@ -35,7 +35,61 @@ public abstract class Patient {
     //    this.bilansOrt = bilansOrt;
     //}
 
+ public String getNom() {
+        return nom;
+    }
 
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
+
+    public String getLieuNaissance() {
+        return lieuNaissance;
+    }
+
+    public String getAdress() {
+        return adress;
+    }
+
+    public List<Trouble> getTroubles() {
+        return troubles;
+    }
+
+    public String getDecriptionTherapie() {
+        return DecriptionTherapie;
+    }
+
+    public void setDecriptionTherapie(String decriptionTherapie) {
+        DecriptionTherapie = decriptionTherapie;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
+
+    public void setLieuNaissance(String lieuNaissance) {
+        this.lieuNaissance = lieuNaissance;
+    }
+
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public void setTroubles(List<Trouble> troubles) {
+        this.troubles = troubles;
+    }
 
 
 

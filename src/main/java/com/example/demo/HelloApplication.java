@@ -15,15 +15,14 @@ import com.calendarfx.view.CalendarView;
 import java.security.PublicKey;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class HelloApplication extends Application {
     public static ApplicationDesktop applicationDesktop ;
     public static Orthophoniste orthophoniste ;
     public static AgendaIntegre agendaIntegre ;
     public static AnamneseEnfant anamneseEnfant ;
+    public static List<Anamnese>  anamnese = new ArrayList<>();
     public static AnamneseAdult anamneseAdult ;
     public static EpreuveClinique epreuveClinique ;
 
@@ -56,6 +55,7 @@ public class HelloApplication extends Application {
         for(QuestionAnamAdult q : anamneseAdult.getQuestions()){
             System.out.println(q.getEnonce());
         }
+        anamnese.addAll(Arrays.asList(anamneseEnfant,anamneseAdult));
 
         epreuveClinique = new EpreuveClinique();
 

@@ -3,7 +3,7 @@ package com.example.demo.models;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class TestQuestionnaire extends Test {
+public  class TestQuestionnaire extends Test {
     protected Set<Question2> questions;
 
     public TestQuestionnaire (String nom , Set<? extends Question2> questions) {
@@ -24,8 +24,16 @@ public abstract class TestQuestionnaire extends Test {
         return score;
     }
 
+    @Override
+    public String getNom() {
+        return nom;
+    }
+
     public void ajouterQuestion(Question2 question) {
         questions.add(question);
     }
+
+    //redefini la fonction qui return le hashcode
+
 
 }

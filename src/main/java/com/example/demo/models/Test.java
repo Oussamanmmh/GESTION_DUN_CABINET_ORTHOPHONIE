@@ -25,5 +25,11 @@ public abstract class Test { //la note de test comprise entre 1 et 10
     public abstract Set<Question2> getQuestions();
     public abstract void  ajouterQuestion(Question2 question);
 
+    public void setCapacite(String capacite) {
+        this.capacite = capacite;
+    }
 
+    public String getCapacite() {
+        return capacite;
+    }
 }

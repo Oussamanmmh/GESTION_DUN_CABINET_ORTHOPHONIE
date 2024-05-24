@@ -7,10 +7,10 @@ public class Atelier extends RendezVous {
    private ArrayList <Integer> listeNumeroDossierPatient ;//maybe {{ map  }}
     private final String type = "Atelier" ;
 
-    public Atelier(String date, Time time, String thematique ) {
+    public Atelier(String date, Time time, String thematique , List<Integer> listeNumeroDossierPatient) {
         super(date, time);
         this.thematique = thematique;
-        this.listeNumeroDossierPatient = new ArrayList<Integer>();
+        this.listeNumeroDossierPatient = new ArrayList<>(listeNumeroDossierPatient);
     }
     public String getType()
     {
@@ -20,6 +20,10 @@ public class Atelier extends RendezVous {
     public String getThematique()
     {
         return this.thematique;
+    }
+    public ArrayList<Integer> getListeNumeroDossierPatient()
+    {
+        return this.listeNumeroDossierPatient;
     }
 
 }

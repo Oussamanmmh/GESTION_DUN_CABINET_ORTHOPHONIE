@@ -6,70 +6,84 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="636.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AgendaController">
-   <children>
-      <DatePicker fx:id="datePicker" layoutX="241.0" layoutY="100.0" prefHeight="25.0" prefWidth="196.0" promptText="Choisissez la date de rendz-vous" style="-fx-background-color: CAF4FF;">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></DatePicker>
-      <ComboBox fx:id="hours" layoutX="241.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" style="-fx-border-color: none; -fx-background-color: CAF4FF;">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
-      <ComboBox fx:id="minutes" layoutX="306.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: CAF4FF;">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor></ComboBox>
-      <AnchorPane fx:id="Mypan" layoutX="24.0" layoutY="294.0" prefHeight="241.0" prefWidth="411.0" style="-fx-border-color: black;">
+
+<ScrollPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AgendaController">
+   <content>
+      <AnchorPane prefHeight="667.0" prefWidth="920.0">
          <children>
-            <VBox fx:id="Myvbox" layoutX="79.0" layoutY="21.0" prefHeight="200.0" prefWidth="253.0" />
+            <DatePicker fx:id="datePicker" layoutX="241.0" layoutY="100.0" prefHeight="25.0" prefWidth="196.0" promptText="Choisissez la date de rendz-vous" style="-fx-background-color: CAF4FF;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </DatePicker>
+            <ComboBox fx:id="hours" layoutX="241.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" style="-fx-border-color: none; -fx-background-color: CAF4FF;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <ComboBox fx:id="minutes" layoutX="306.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: CAF4FF;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <AnchorPane fx:id="Mypan" layoutX="24.0" layoutY="294.0" prefHeight="241.0" prefWidth="411.0" style="-fx-border-color: black;">
+               <children>
+                  <VBox fx:id="Myvbox" layoutX="79.0" layoutY="21.0" prefHeight="200.0" prefWidth="253.0" />
+               </children>
+            </AnchorPane>
+            <ChoiceBox fx:id="MychoiceBox" layoutX="335.0" layoutY="242.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: CAF4FF;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ChoiceBox>
+            <Label layoutX="24.0" layoutY="245.0" style="-fx-font-weight: bold;" text="Veuillez choisir le type de rendez-vous     :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="100.0" prefHeight="25.0" prefWidth="162.0" style="-fx-font-weight: bold;" text="La date de rendez-vous :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Button layoutX="339.0" layoutY="558.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #5AB2FF;" text="Valider" />
+            <Label layoutX="24.0" layoutY="173.0" prefHeight="25.0" prefWidth="162.0" style="-fx-font-weight: bold;" text="L'heure de rendez-vous :">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableRDV" layoutX="469.0" layoutY="149.0" prefHeight="511.0" prefWidth="441.0">
+              <columns>
+                <TableColumn fx:id="type" prefWidth="98.66668701171875" text="Type" />
+                <TableColumn fx:id="date" prefWidth="169.3333740234375" text="Date de rendez-vous" />
+                  <TableColumn fx:id="heure" minWidth="7.3333740234375" prefWidth="174.6666259765625" text="Heur de rendez-vous" />
+              </columns>
+            </TableView>
+            <Label layoutX="594.0" layoutY="64.0" style="-fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,3.0), 10, 0, 0, 10);" text="Liste des rendez-vous :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="134.0" layoutY="37.0" style="-fx-font-weight: bold; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,3.0), 10, 0, 0, 10);" text="Ajouter un rendez-vous :">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="time" layoutX="375.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: CAF4FF;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <Button fx:id="ajouterObs" layoutX="469.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleClick" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #5AB2FF;" text="Ajouter observation" />
+            <Button fx:id="faireLeRdv" layoutX="763.0" layoutY="112.0" mnemonicParsing="false" onAction="#faireRDV" style="-fx-background-color: gray; -fx-background-radius: 5;" text="Faire le rendez-vous" />
          </children>
       </AnchorPane>
-      <ChoiceBox fx:id="MychoiceBox" layoutX="335.0" layoutY="242.0" prefHeight="25.0" prefWidth="95.0" style="-fx-background-color: CAF4FF;" />
-      <Label layoutX="24.0" layoutY="245.0" style="-fx-font-weight: bold;" text="Veuillez choisir le type de rendez-vous     :">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Label layoutX="24.0" layoutY="100.0" prefHeight="25.0" prefWidth="162.0" style="-fx-font-weight: bold;" text="La date de rendez-vous :">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <Button layoutX="339.0" layoutY="558.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="25.0" prefWidth="71.0" style="-fx-background-color: #5AB2FF;" text="Valider" />
-      <Label layoutX="24.0" layoutY="173.0" prefHeight="25.0" prefWidth="162.0" style="-fx-font-weight: bold;" text="L'heure de rendez-vous :">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Label>
-      <TableView fx:id="tableRDV" layoutX="491.0" layoutY="152.0" prefHeight="484.0" prefWidth="398.0">
-        <columns>
-          <TableColumn fx:id="type" prefWidth="84.00006103515625" text="Type" />
-          <TableColumn fx:id="date" prefWidth="149.3333740234375" text="Date de rendez-vous" />
-            <TableColumn fx:id="heure" minWidth="7.3333740234375" prefWidth="162.0" text="Heur de rendez-vous" />
-        </columns>
-      </TableView>
-      <Label layoutX="594.0" layoutY="64.0" style="-fx-font-weight: bold;" text="Liste des rendez-vous :">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="134.0" layoutY="37.0" style="-fx-font-weight: bold;" text="Ajouter un rendez-vous :">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="time" layoutX="375.0" layoutY="173.0" prefHeight="25.0" prefWidth="58.0" style="-fx-background-color: CAF4FF;">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </ComboBox>
-      <Button fx:id="ajouterObs" layoutX="753.0" layoutY="112.0" mnemonicParsing="false" onAction="#handleClick" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #5AB2FF;" text="Ajouter observation" />
-   </children>
-</AnchorPane>
+   </content>
+</ScrollPane>

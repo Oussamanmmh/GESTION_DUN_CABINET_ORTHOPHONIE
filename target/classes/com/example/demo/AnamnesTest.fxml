@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane fx:id="parentPan" maxHeight="1.7976931348623157E308" prefHeight="551.0" prefWidth="1059.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.AnamnesTestController">
    <children>
       <VBox layoutX="-1.0" maxHeight="1000.0" prefHeight="551.0" prefWidth="137.0" style="-fx-background-color: gray;">
@@ -22,7 +21,7 @@
             <AnchorPane prefHeight="33.0" prefWidth="91.0" />
          </children>
       </VBox>
-      <AnchorPane fx:id="displaypane" layoutX="136.0" layoutY="54.0" prefHeight="497.0" prefWidth="508.0" style="-fx-background-color: #aaffaa;">
+      <AnchorPane fx:id="displaypane" layoutX="136.0" layoutY="54.0" prefHeight="497.0" prefWidth="508.0">
          <children>
             <GridPane fx:id="griddisplay" alignment="CENTER" layoutY="9.0" prefHeight="474.0" prefWidth="508.0">
               <columnConstraints>
@@ -46,7 +45,7 @@
                   <RowConstraints maxHeight="25.333328247070312" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="32.3333740234375" minHeight="10.0" prefHeight="30.3333740234375" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="38.999979654947936" minHeight="10.0" prefHeight="26.333292643229186" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="29.66668701171875" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="35.333333333333314" minHeight="0.0" prefHeight="0.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
@@ -54,27 +53,17 @@
       </AnchorPane>
       <HBox layoutX="136.0" prefHeight="55.0" prefWidth="508.0" style="-fx-background-color: #CAF4FF;">
          <children>
-            <Button fx:id="buttonqcm" mnemonicParsing="false" onAction="#rendreTestQcm" prefHeight="55.0" prefWidth="100.0" style="-fx-border-color: transparent; -fx-background-color: white;" text="Tests QCM">
+            <Button fx:id="buttonquestionnaire" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" onAction="#rendreTestQuestionnair" prefHeight="55.0" prefWidth="150.0" style="-fx-border-color: transparent; -fx-background-color: white;" text="Test questionnaire">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonqcu" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#rendreTestQcu" prefHeight="55.0" prefWidth="95.0" style="-fx-border-color: transparent; -fx-background-color: white;" text="Tests QCU">
+            <Button fx:id="buttonexercice" layoutX="195.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="149.0" style="-fx-border-color: transparent; -fx-background-color: white;" text="Tests Exercices">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="buttonquestion" layoutX="110.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="105.0" style="-fx-border-color: transparent; -fx-background-color: white;" text="Tests Question a  reponse libre">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="buttonexercice" layoutX="195.0" layoutY="10.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="110.0" style="-fx-border-color: transparent; -fx-background-color: white;" text="Tests Exercices">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button fx:id="buttonaname" mnemonicParsing="false" prefHeight="55.0" prefWidth="133.0" style="-fx-border-color: transparent;" text="Anamnese">
+            <Button fx:id="buttonaname" mnemonicParsing="false" prefHeight="55.0" prefWidth="236.0" style="-fx-border-color: transparent;" text="Anamnese">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -106,5 +95,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <Button fx:id="creerTestAnam" layoutX="989.0" layoutY="98.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="88.0" text="Creer" />
    </children>
 </AnchorPane>

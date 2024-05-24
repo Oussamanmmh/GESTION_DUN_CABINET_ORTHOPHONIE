@@ -4,7 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Qcu extends  Question2{
+    private final String type = "QCU" ;
     //une seule reponse possible
+    public String getType() {
+        return type;
+    }
+
     private List<String> propositions ;//les propositions de la question
     private String reponse ; // la reponse correcte
     private String reponsePatient ; // la reponse du patient

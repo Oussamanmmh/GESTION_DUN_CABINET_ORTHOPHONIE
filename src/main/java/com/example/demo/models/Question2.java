@@ -14,5 +14,13 @@ public abstract class Question2 {
     public String getEnonce() {
         return enonce;
     }
+    public boolean equals(Question2 q)
+    {
+        return this.enonce.equals(q.getEnonce());
+    }
+    @Override
+    public int hashCode() {
+        return   enonce.hashCode();
+    }
 
 }

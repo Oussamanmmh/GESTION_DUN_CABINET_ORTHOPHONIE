@@ -46,7 +46,8 @@ public class ListdespatientsController implements Initializable {
     TableColumn<Patient, String> prenom; //la colonne pour afficher le prenom
     @FXML
     TableColumn<Patient, String> adress;//la colonne pour afficher l'adress
-
+    @FXML
+    TextField rechercheField ;
     @FXML
     TableColumn<Patient, String> tel; //la colonne pour afficher le numero de telephone dans le cas d'un adulte
     @FXML
@@ -117,6 +118,19 @@ public class ListdespatientsController implements Initializable {
             //switcher les tables
             switchTable(newVal);
         });
+        rechercheField.setOnKeyReleased(e -> {
+            if (rechercheField.getText().isEmpty()) {
+                tablePatient.setItems(list);
+                return;
+            }
+            ObservableList<Patient> listRecherche = FXCollections.observableArrayList();
+            for (Patient patient : list) {
+                if (patient.getNom().toLowerCase().contains(rechercheField.getText().toLowerCase()) || patient.getPrenom().toLowerCase().contains(rechercheField.getText().toLowerCase())) {
+                    listRecherche.add(patient);
+                }
+            }
+            tablePatient.setItems(listRecherche);
+        });
     }
 
     //pour ajouter un patient
@@ -181,7 +195,7 @@ public class ListdespatientsController implements Initializable {
         if (!list.isEmpty() && tablePatient.getSelectionModel().getSelectedIndex() != -1) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Confirmation");
-            alert.setHeaderText("Voulez-vous vraiment supprimer ce patient ?");
+            alert.setHeaderText(null);
             alert.setContentText("Appuyez sur OK pour confirmer, sinon appuyez sur Annuler.");
             alert.showAndWait().ifPresent(response -> {
                 if (response == ButtonType.OK) {
@@ -191,6 +205,7 @@ public class ListdespatientsController implements Initializable {
                     int index = tablePatient.getSelectionModel().getSelectedIndex();
                     System.out.println("index = " + index);
                     //supprimer le patient de la liste
+
                     list.remove(index);
                     //afficher la liste des patients
                     tablePatient.setItems(list);

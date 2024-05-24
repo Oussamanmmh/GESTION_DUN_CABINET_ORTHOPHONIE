@@ -29,7 +29,7 @@ public class AgendaIntegre {
                                  switch (personne) {
                                      case "Adult":
                                          if (r.getTempsEnMinutes() - rendezVous.getTempsEnMinutes() <=90 && rendezVous.getTempsEnMinutes() - r.getTempsEnMinutes() <= 90) {
-                                             throw new IllegalArgumentException("Rendez-vous déjà pris****");}
+                                             throw new IllegalArgumentException("Rendez-vous déjà pris");}
 
                                          break;
                                      case "Enfant":
@@ -66,6 +66,44 @@ public class AgendaIntegre {
 
     public AgendaIntegre() {
         rendezVous = new ArrayList<>();
+
+    }
+    public void addRendezVous(RendezVous rendezVous) {
+        try {
+            System.out.println("helloe we have : " + rendezVous.getHeure().getHours() + "and" + rendezVous.getDate());
+            if (this.rendezVous.isEmpty()){ this.rendezVous.add(rendezVous); }
+            else {
+                for (RendezVous r : this.rendezVous) {
+
+                    if (r.getDate().equals(rendezVous.getDate()) && r.getHeure().equals(rendezVous.getHeure())) {
+                        throw new IllegalArgumentException("Rendez-vous déjà pris");
+                    } else {
+                        if (r.getDate().equals(rendezVous.getDate())) {
+
+
+
+                                if (r.getTempsEnMinutes() - rendezVous.getTempsEnMinutes() <= 60 && r.getTempsEnMinutes() - rendezVous.getTempsEnMinutes() <=60) {
+                                    throw new IllegalArgumentException("Rendez-vous déjà pris");
+
+                            }
+
+
+                        }
+                    }
+
+                }
+                this.displayRDV();
+                this.rendezVous.add(rendezVous);
+                System.out.println("rendez-vous ajouter avec succes");
+            }
+
+
+        }
+        catch (IllegalArgumentException e)
+        {
+            System.out.println("big error");
+            throw new IllegalArgumentException(e.getMessage()) ;
+        }
 
     }
 
