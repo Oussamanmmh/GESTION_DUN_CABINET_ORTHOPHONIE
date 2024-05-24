@@ -13,7 +13,7 @@ public class Adult extends Patient {
         this.profession = profession ;
         this.numTel = numTel ;
     }
- public String getNom()
+    public String getNom()
  {
      return this.nom ;
  }
@@ -21,9 +21,9 @@ public class Adult extends Patient {
     {
         return this.prenom ;
     }
-    public String getAdress()
+    public String getAdresse()
     {
-        return this.adress ;
+        return this.adresse ;
     }
 
     public String getProfession()
@@ -47,4 +47,7 @@ public class Adult extends Patient {
     public String getDiplome() {
         return diplome;
     }
+
+    public String getType(){return "Adult";}
 }
+

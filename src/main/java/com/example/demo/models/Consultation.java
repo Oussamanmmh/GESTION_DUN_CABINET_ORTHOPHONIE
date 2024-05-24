@@ -1,6 +1,9 @@
 package com.example.demo.models;
 
+import java.sql.Time;
 import java.time.Duration;
+import java.time.Duration;
+import java.util.Date;
 
 public class Consultation extends RendezVous{
 
@@ -8,8 +11,9 @@ public class Consultation extends RendezVous{
     private String nomPatient ;
     private String prenomPatient ;
     private int agePatient ;
-    public  Consultation (int agePatient , String nomPatient , String prenomPatient)
+    public  Consultation (int agePatient , String nomPatient , String prenomPatient,Date date, Time heure)
     {
+        super(date,heure);
         this.nomPatient = nomPatient ;
         this.prenomPatient = prenomPatient ;
 
@@ -26,5 +30,34 @@ public class Consultation extends RendezVous{
         }
 
     }
+
+    // Getters and Setters
+    public String getNomPatient() {
+        return nomPatient;
+    }
+
+    public void setNomPatient(String nomPatient) {
+        this.nomPatient = nomPatient;
+    }
+
+    public String getPrenomPatient() {
+        return prenomPatient;
+    }
+
+    public void setPrenomPatient(String prenomPatient) {
+        this.prenomPatient = prenomPatient;
+    }
+
+    public int getAgePatient() {
+        return agePatient;
+    }
+
+    public void setAgePatient(int agePatient) {
+        this.agePatient = agePatient;
+    }
+    public String getType(){
+        return "Consultaion";
+    }
+
 
 }

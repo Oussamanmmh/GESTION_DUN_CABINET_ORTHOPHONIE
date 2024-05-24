@@ -35,8 +35,8 @@ public class Enfant extends Patient {
         return this.prenom;
     }
 
-    public String getAdress() {
-        return this.adress;
+    public String getAdresse() {
+        return this.adresse;
     }
 
     public String getLieuNaissance() {
@@ -46,4 +46,6 @@ public class Enfant extends Patient {
     public Date getDateNaissance() {
         return this.dateNaissance;
     }
+
+    public String getType(){return "Enfant";}
 }

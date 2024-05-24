@@ -1,5 +1,8 @@
 package com.example.demo.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Orthophoniste {
     private String nom ;
     private String prenom ;
@@ -7,7 +10,7 @@ public class Orthophoniste {
     private String mdp ;
     private String adr ;
     private String numeroTel ;
-
+    List<DossierPatient> listeDossier=new ArrayList<>();
 
     // constructeur
     public Orthophoniste(String nom , String prenom ,String email , String adr , String numeroTel , String mdp)
@@ -27,4 +30,6 @@ public class Orthophoniste {
     public String getMdp() {
         return mdp;
     }
-}
+    }
+
+

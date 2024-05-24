@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DossierPatientController">
+    <children>
+        <ImageView fitHeight="95.0" fitWidth="95.0" layoutX="41.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@assets/images.jpg" />
+            </image>
+        </ImageView>
+        <Label id="NDossierLabel" layoutX="175.0" layoutY="60.0" text="Numéro du dossier:" />
+        <Label id="nomLabel" layoutX="175.0" layoutY="88.0" text="Nom:" />
+        <Label id="prenomLabel" layoutX="175.0" layoutY="119.0" text="Prenom:" />
+        <TableView layoutX="34.0" layoutY="163.0" prefHeight="200.0" prefWidth="383.0">
+            <columns>
+                <TableColumn prefWidth="93.99996948242188" text="Type" />
+                <TableColumn prefWidth="135.33334350585938" text="Date" />
+                <TableColumn prefWidth="152.6666259765625" text="Heure" />
+            </columns>
+        </TableView>
+        <Button id="billanButton" layoutX="466.0" layoutY="163.0" mnemonicParsing="false" text="Billan du patient" />
+        <Button id="ficheButton" layoutX="466.0" layoutY="219.0" mnemonicParsing="false" text="Fiche du patient" />
+        <Button id="dossierButton" layoutX="459.0" layoutY="273.0" mnemonicParsing="false" text="Modifier le dossier" />
+        <Button id="retourButton" layoutX="517.0" layoutY="350.0" mnemonicParsing="false" text="Retour" />
+    </children>
+</AnchorPane>

@@ -10,5 +10,13 @@ public abstract class Question {
         return score;
     }
 
+    public String getEnonce(){
+
+        return this.enonce;
+    }
+
+    public Question(String enonce){this.enonce=enonce;}
+
+    public abstract int getNote();
 
 }
