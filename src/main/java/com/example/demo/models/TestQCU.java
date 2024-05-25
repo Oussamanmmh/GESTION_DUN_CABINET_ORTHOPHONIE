@@ -5,9 +5,14 @@ import java.util.Set;
 
 public class TestQCU extends TestQuestionnaire{
 
-    public TestQCU( Set<Qcu> questions) {
+    public TestQCU( String nom , Set<Qcu> questions) {
         //affecter les questions a la liste des questions
-        super.questions = new HashSet<Qcu>(questions);
+        super(nom, questions);
+
     }
 
+    @Override
+    public String getNom() {
+        return nom;
+    }
 }

@@ -4,3 +4,4 @@ public class BilanOrt {
     private Anamnese anamnese ;
     private List<EpreuveClinique> epreuvesCliniques ;
 }
+

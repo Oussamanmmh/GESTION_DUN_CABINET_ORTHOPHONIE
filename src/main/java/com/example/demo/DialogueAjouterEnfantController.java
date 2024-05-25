@@ -5,10 +5,7 @@ import com.example.demo.models.Enfant;
 import com.example.demo.models.Patient;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.DialogPane;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.time.ZoneId;
@@ -57,7 +54,14 @@ public class DialogueAjouterEnfantController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("dialogue ajouter patient controller");
-
+        nomField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[a-zA-Z]*$")) ? change : null));
+        prenomField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[a-zA-Z]*$")) ? change : null));
+      contactField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[0-9]*$")) ? change : null));
+        numField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[0-9]*$")) ? change : null));
 
     }
 

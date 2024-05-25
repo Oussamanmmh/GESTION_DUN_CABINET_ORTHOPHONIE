@@ -44,6 +44,5 @@ public abstract class RendezVous {
     }
 
 
-
-
+    public abstract  String getType();
 }

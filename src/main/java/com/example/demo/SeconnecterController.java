@@ -3,6 +3,7 @@ package com.example.demo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,9 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.EventListener;
+import java.util.ResourceBundle;
 
-public class SeconnecterController {
+public class SeconnecterController implements Initializable {
 
     private Stage stage ;
     private Scene scene ;
@@ -91,4 +94,17 @@ public class SeconnecterController {
         erreurLabel.setText(mot +" est incorrect");
  }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        emailField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$"))
+            {
+                emailField.setStyle("-fx-border-color: red");
+            }
+            else
+            {
+                emailField.setStyle("-fx-border-color: green");
+            }
+        });
+    }
 }

@@ -58,6 +58,13 @@ public class DialogueAjouterPatientController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println("dialogue ajouter patient controller");
+        nomField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[a-zA-Z]*$")) ? change : null));
+        prenomField.setTextFormatter(new TextFormatter<>(
+                change ->(change.getControlNewText().matches("^[a-zA-Z]*$")) ? change : null));
+        contactField.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("^[0-9]*$")) ? change : null));
+
 
 
 
