@@ -7,7 +7,7 @@ public class Consultation extends RendezVous{
 
     //on a pas encore creer le patient
     private String nomPatient ;
-    private String prenomPatient ;
+    private String prenomPatient  ;
     private int agePatient ;
     private final String type = "Consultation" ;
     public  Consultation (int agePatient , String nomPatient , String prenomPatient , String date , Time time)
