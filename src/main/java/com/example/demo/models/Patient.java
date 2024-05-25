@@ -1,12 +1,13 @@
 package com.example.demo.models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public abstract class Patient {
     protected String nom;
     protected String prenom;
-
+    protected int numeroDossier;
     protected Date dateNaissance;
 
     protected String lieuNaissance;
@@ -24,6 +25,7 @@ public abstract class Patient {
         this.dateNaissance = dateNaissance;
         this.lieuNaissance = lieuNaissance;
         this.adress = adress;
+        troubles = new ArrayList<>() ;
     }
 
 
@@ -92,6 +94,12 @@ public abstract class Patient {
     }
 
 
+    public void  ajouterTrouble (Trouble trouble)
+    {
+        this.troubles.add(trouble) ;
+    }
 
-
+    public int getNumeroDossier() {
+        return numeroDossier;
+    }
 }

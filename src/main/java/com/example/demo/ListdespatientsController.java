@@ -60,6 +60,8 @@ public class ListdespatientsController implements Initializable {
     TableColumn<Patient, String> lieudenaissance;//la colonne pour afficher le lieu de naissance
     @FXML
     JFXButton ajouterpatient;//le bouton pour ajouter un patient
+    @FXML
+    JFXButton voirDetailsPatients ;
 
 
     public void retourPageAc(javafx.scene.input.MouseEvent mouseEvent) //methode pour retourner a la page d'accueil
@@ -131,6 +133,31 @@ public class ListdespatientsController implements Initializable {
             }
             tablePatient.setItems(listRecherche);
         });
+        //voir details des patients
+        voirDetailsPatients.setOnAction(e -> {
+            if (tablePatient.getSelectionModel().getSelectedIndex() != -1) {
+                Patient patient = tablePatient.getSelectionModel().getSelectedItem();
+                voirDetailsPatient(patient);
+            }
+        });
+    }
+
+    private void voirDetailsPatient(Patient patient) {
+        int numDossier = patient.getNumeroDossier();
+        DossierPatient dossierCourant ;
+        for(DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList())
+        {
+            if(dossierPatient.getNumeroDossier()==numDossier)
+            {
+                dossierCourant = dossierPatient ;
+            }
+        }
+
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(".fxml"));
+        //to be continue
+
+
     }
 
     //pour ajouter un patient

@@ -8,11 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,7 +62,11 @@ public class AgendaController implements Initializable {
     @FXML
     TableColumn<RendezVous, String> heure;
     @FXML
+    DatePicker rechercheRDV;
+    @FXML
     Button ajouterObs;
+    @FXML
+    Button retourButton ;
 
     TextField numDeDossier = new TextField();
     private Label label = new Label();
@@ -226,6 +232,30 @@ public class AgendaController implements Initializable {
         nombreDesPtients.setPromptText("Le nombre des patient");
         dialogueButton.setOnAction(e -> {
             ajouterLesnumDossier();
+        });
+        //comparer la date de rendez-vous avec la date actuelle
+        datePicker.setOnAction(e -> {
+            LocalDate date = datePicker.getValue();
+            if (date.isBefore(LocalDate.now())) {
+                datePicker.setStyle("-fx-border-color: red");
+                datePicker.setValue(null);
+                alertDisplay("Veuillez entrer une date valide");
+
+            } else {
+                datePicker.setStyle("-fx-border-color: green");
+            }
+        });
+
+        //recherch d'un rendez-vous
+        rechercheRDV.setOnAction(e -> {
+            LocalDate date = rechercheRDV.getValue();
+            ObservableList<RendezVous> list = FXCollections.observableArrayList();
+            for (RendezVous rdv : HelloApplication.agendaIntegre.getRendezVous()) {
+                if (rdv.getDate().equals(date.toString())) {
+                    list.add(rdv);
+                }
+            }
+            tableRDV.setItems(list);
         });
 
     }
@@ -462,37 +492,34 @@ public class AgendaController implements Initializable {
                 handlRDVConsultation((Consultation) selectedRendezVous);
                 break;
             case "Suivi":
-                handlRDVSuivi((Suivi)selectedRendezVous) ;
+                handlRDVSuivi((Suivi) selectedRendezVous);
                 break;
             case "Atelier":
-              handlRDVAtelier((Atelier)selectedRendezVous);
+                handlRDVAtelier((Atelier) selectedRendezVous);
                 break;
         }
 
     }
 
-    private void handlRDVAtelier(Atelier selectedRendezVous) {
+    public void handlRDVAtelier(Atelier selectedRendezVous) {
 
     }
 
-    private void handlRDVSuivi(Suivi selectedRendezVous) {
+    public void handlRDVSuivi(Suivi selectedRendezVous) {
 
-      int i = selectedRendezVous.getNumeroDossierDePatient();
-      DossierPatient dossierPatientCourrant ;
-      for (DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList())
-      {
-         if (dossierPatient.getNumeroDossier()==i)
-         {
-             dossierPatientCourrant = dossierPatient ;
-         }
+        int i = selectedRendezVous.getNumeroDossierDePatient();
+        DossierPatient dossierPatientCourrant;
+        for (DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList()) {
+            if (dossierPatient.getNumeroDossier() == i) {
+                dossierPatientCourrant = dossierPatient;
+            }
 
-      }
-
+        }
 
 
     }
 
-    private void handlRDVConsultation(Consultation selectedRendezVous) {
+    public void handlRDVConsultation(Consultation selectedRendezVous) {
         FXMLLoader fxmlLoader;
         if (selectedRendezVous.getAgePatient() > 18) {
             fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("DialogueAjouterPatient.fxml"));
@@ -528,6 +555,22 @@ public class AgendaController implements Initializable {
         }
 
 
+    }
+    public void retourButton (ActionEvent event){
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePage.fxml"));
+
+        try {
+            Scene scene = new Scene(fxmlLoader.load());
+            Button button = (Button) event.getSource();
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.setTitle("Page d'acceuil");
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Il ya une erreur");
+        }
     }
 
 
