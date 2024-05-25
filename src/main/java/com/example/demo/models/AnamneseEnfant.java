@@ -6,7 +6,7 @@ import  java.util.List;
 public class AnamneseEnfant extends Anamnese {
 
     private List<Question> questionsEnfant = new ArrayList<>(); // liste des questions anamnese enfant des questions à réponse libre
-
+ 
     public AnamneseEnfant() {
         // Constructeur par défaut
     }
