@@ -43,6 +43,44 @@ public class Enfant extends Patient {
         return this.lieuNaissance;
     }
 
+    public void setClassdetude(String classdetude) {
+        this.classdetude = classdetude;
+    }
+
+    @Override
+    public String getDescriptionTherapie() {
+        return super.getDescriptionTherapie();
+    }
+
+    @Override
+    public int getNumeroDossier() {
+        return super.getNumeroDossier();
+    }
+
+    @Override
+    public void setAdress(String adress) {
+        super.setAdress(adress);
+    }
+
+    public void setNumTelmere(String numTelmere) {
+        this.numTelmere = numTelmere;
+    }
+
+    public void setNumTelpere(String numTelpere) {
+        this.numTelpere = numTelpere;
+    }
+
+    @Override
+    public void setDateNaissance(Date dateNaissance) {
+        super.setDateNaissance(dateNaissance);
+    }
+
+    @Override
+    public void setDecriptionTherapie(String decriptionTherapie) {
+        super.setDecriptionTherapie(decriptionTherapie);
+    }
+
+
     public Date getDateNaissance() {
         return this.dateNaissance;
     }

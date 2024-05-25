@@ -43,6 +43,31 @@ public class Adult extends Patient {
         return this.dateNaissance ;
     }
 
+    @Override
+    public void setDateNaissance(Date dateNaissance) {
+        super.setDateNaissance(dateNaissance);
+    }
+
+    @Override
+    public void setAdress(String adress) {
+        super.setAdress(adress);
+    }
+    public void setDiplome(String diplome)
+    {
+        this.diplome = diplome ;
+    }
+
+
+    public void setProfession(String profession)
+    {
+        this.profession = profession ;
+    }
+    public void setNumTel(String numTel)
+    {
+        this.numTel = numTel ;
+    }
+
+
 
     public String getDiplome() {
         return diplome;

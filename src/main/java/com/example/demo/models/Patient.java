@@ -102,4 +102,8 @@ public abstract class Patient {
     public int getNumeroDossier() {
         return numeroDossier;
     }
+
+    public String getDescriptionTherapie() {
+       return DecriptionTherapie;
+    }
 }
