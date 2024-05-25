@@ -6,6 +6,7 @@ import java.util.Date;
 public class Suivi extends RendezVous{
     private DeroulementSeance typeSeance;
     private int numeroDossierDePatient;
+    private final String type = "Suivi" ;
 
     public  Suivi(DeroulementSeance deroulementSeance , int numeroDossierDePatient, Date date, Time heure)
     {

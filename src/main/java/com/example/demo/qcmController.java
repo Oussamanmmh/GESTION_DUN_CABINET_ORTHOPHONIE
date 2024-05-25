@@ -1,9 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.models.Qcm;
-import com.example.demo.models.Qcu;
-import com.example.demo.models.QesrepLibre;
-import com.example.demo.models.Question;
+import com.example.demo.models.*;
+import com.example.demo.models.Test;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -17,7 +15,13 @@ public class qcmController {
     @FXML
     private Button repondreButton;
     @FXML
+    private Button precedentButton;
+    @FXML
+    private Button suivantButton;
+    @FXML
     private Label nomTestLabel;
+    @FXML
+    private Label testIndexLabel;
 
     // Map pour stocker les CheckBox associées à chaque question
     private Map<Question, List<CheckBox>> questionCheckBoxes = new HashMap<>();
@@ -26,16 +30,34 @@ public class qcmController {
     // Map pour stocker les TextField associées à chaque question libre
     private Map<Question, TextField> questionTextFields = new HashMap<>();
 
+    private List<Test> tests = new ArrayList<>();
+    private int currentTestIndex = 0;
+
+    private BilanOrt bilanOrt;
+
+    public void setBilanOrt(BilanOrt bilanOrt) {
+        this.bilanOrt = bilanOrt;
+    }
+
     @FXML
     public void initialize() {
-        // Simuler la récupération des questions depuis une source de données
-        List<Question> questions = getQcmList();
+        // Simuler la récupération des tests depuis une source de données
+        tests = getTestList();
 
-        // Afficher les questions
-        displayQuestions(questions);
+        // Afficher le premier test
+        displayTest(tests.get(currentTestIndex));
 
-        // Ajouter un gestionnaire d'événements pour le bouton répondre
-        repondreButton.setOnAction(event -> handleRepondreButton(questions));
+        // Ajouter un gestionnaire d'événements pour les boutons
+        repondreButton.setOnAction(event -> handleRepondreButton(tests.get(currentTestIndex).getQuestions()));
+        precedentButton.setOnAction(event -> showPreviousTest());
+        suivantButton.setOnAction(event -> showNextTest());
+    }
+
+    private List<Test> getTestList() {
+        // Exemple de tests pour démonstration
+        Test test1 = new TestQuestionnaire("Test 1", "capacite 1", getQcmList());
+        Test test2 = new TestQuestionnaire("Test 2", "capacite 1", getQcmList());
+        return Arrays.asList(test1, test2);
     }
 
     private List<Question> getQcmList() {
@@ -51,6 +73,13 @@ public class qcmController {
         QesrepLibre ql1 = new QesrepLibre("Question libre 1:");
 
         return Arrays.asList(qcm1, qcu1, ql1);
+    }
+
+    private void displayTest(Test test) {
+        nomTestLabel.setText(test.getNom());
+        testIndexLabel.setText("Test " + (currentTestIndex + 1) + "/" + tests.size());
+        questionContainer.getChildren().clear();
+        displayQuestions(test.getQuestions());
     }
 
     private void displayQuestions(List<Question> questions) {
@@ -84,6 +113,20 @@ public class qcmController {
                 questionContainer.getChildren().add(textField);
                 questionTextFields.put(question, textField);
             }
+        }
+    }
+
+    private void showPreviousTest() {
+        if (currentTestIndex > 0) {
+            currentTestIndex--;
+            displayTest(tests.get(currentTestIndex));
+        }
+    }
+
+    private void showNextTest() {
+        if (currentTestIndex < tests.size() - 1) {
+            currentTestIndex++;
+            displayTest(tests.get(currentTestIndex));
         }
     }
 

@@ -11,6 +11,7 @@ public class Consultation extends RendezVous{
     private String nomPatient ;
     private String prenomPatient ;
     private int agePatient ;
+    private final String type = "Consultation" ;
     public  Consultation (int agePatient , String nomPatient , String prenomPatient,Date date, Time heure)
     {
         super(date,heure);

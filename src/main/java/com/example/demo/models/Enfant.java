@@ -48,4 +48,16 @@ public class Enfant extends Patient {
     }
 
     public String getType(){return "Enfant";}
+
+    public void setClassdetude(String classdetude) {
+        this.classdetude = classdetude;
+    }
+
+    public void setNumTelmere(String numTelmere) {
+        this.numTelmere = numTelmere;
+    }
+
+    public void setNumTelpere(String numTelpere) {
+        this.numTelpere = numTelpere;
+    }
 }

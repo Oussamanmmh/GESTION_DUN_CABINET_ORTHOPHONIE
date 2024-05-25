@@ -16,7 +16,7 @@ public class DossierPatient {
 
     public DossierPatient(Patient patient) {
         nbDossier++;
-        this.numeroDossier = 1;
+        this.numeroDossier = nbDossier;
         this.patient = patient;
 
     }

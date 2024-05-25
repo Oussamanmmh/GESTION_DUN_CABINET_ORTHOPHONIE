@@ -4,13 +4,17 @@ import com.example.demo.models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
 import java.sql.Time;
 import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class DossierPatientController {
@@ -32,58 +36,119 @@ public class DossierPatientController {
     @FXML
     Label descriptionLabel;
     @FXML
-    private TableView<Rdv> rendezVousTable;
+    private TableView<RendezVous> rendezVousTable;
     @FXML
-    private TableColumn<Rdv, String> typeColumn;
+    private TableColumn<RendezVous, String> typeColumn;
     @FXML
-    private TableColumn<Rdv, Date> dateColumn;
+    private TableColumn<RendezVous, Date> dateColumn;
     @FXML
-    private TableColumn<Rdv, Time> heureColumn;
+    private TableColumn<RendezVous, Time> heureColumn;
     @FXML
-    Label dateDeNaissaceLabel;
+    Label dateDeNaissanceLabel;
     @FXML
     Label lieuDeNaissanceLabel;
     @FXML
     Label adresseLabel;
+    @FXML
+    Label extraInfoLabel;
+    @FXML
+    Label diplomeLabel;
+    @FXML
+    Label diplome_Label;
+    @FXML
+    Label proffessionLabel;
+    @FXML
+    Label proffession_Label;
+    @FXML
+    Label numLabel;
+    @FXML
+    Label num_Label;
 
+    private DossierPatient currentDossier;
 
     public void displayDossier(DossierPatient dossier) {
+        this.currentDossier = dossier;
+        Patient patient = dossier.getPatient();
 
+        NDossierLabel.setText("" + dossier.getNumeroDossier());
+        nomLabel.setText(patient.getNom());
+        prenomLabel.setText(patient.getPrenom());
+        dateDeNaissanceLabel.setText("" + patient.getDateNaissance());
+        lieuDeNaissanceLabel.setText(patient.getLieuNaissance());
+        adresseLabel.setText(patient.getAdresse());
+        descriptionLabel.setText("Description: " + patient.getDescriptionTherapie());
 
-        NDossierLabel.setText( ""+dossier.getNumeroDossier());
-        nomLabel.setText( dossier.getPatient().getNom());
-        prenomLabel.setText(dossier.getPatient().getPrenom());
-        descriptionLabel.setText("Description: " + dossier.getPatient().getDescriptionTherapie());
+        if (patient instanceof Enfant) {
+            Enfant enfant = (Enfant) patient;
 
-        typeColumn.setCellValueFactory(new PropertyValueFactory<Rdv, String>("type"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<Rdv, Date>("date"));
-        heureColumn.setCellValueFactory(new PropertyValueFactory<Rdv, Time>("heure"));
+            diplome_Label.setText("Classe d'étude: ");
+            diplomeLabel.setText(enfant.getClassdetude());
 
-        List<Rdv> rendezVousList = null;
-        try {
-            rendezVousList = List.of(
-                    new Rdv("Consultation", new SimpleDateFormat("yyyy-MM-dd").parse("2023-05-01"), Time.valueOf("10:00:00")),
-                    new Rdv("Suivi", new SimpleDateFormat("yyyy-MM-dd").parse("2023-05-15"), Time.valueOf("14:00:00")),
-                    new Rdv("Bilan", new SimpleDateFormat("yyyy-MM-dd").parse("2023-06-01"), Time.valueOf("09:00:00"))
-            );
-            System.out.println(rendezVousList);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
+            proffessionLabel.setText(enfant.getNumTelmere());
+            proffession_Label.setText("n° mère: ");
+
+            num_Label.setText("n° père: ");
+            numLabel.setText(enfant.getNumTelpere());
+
+        } else if (patient instanceof Adult) {
+            Adult adult = (Adult) patient;
+
+            diplome_Label.setText("Diplome: ");
+            diplomeLabel.setText(adult.getDiplome());
+
+            proffessionLabel.setText(adult.getProfession());
+            proffession_Label.setText("Profession: ");
+
+            num_Label.setText("n° tel:");
+            numLabel.setText(adult.getNumTel());
+        } else {
+            extraInfoLabel.setText("");
         }
 
-// ObservableList pour le TableView
-        ObservableList<Rdv> observableList = FXCollections.observableArrayList();
-        List<RendezVous> Listrdv = dossier.getRendezVous();
-        for (RendezVous rdv : Listrdv) {
-            Rdv  rendezvous = new Rdv(rdv.getType(), rdv.getDate(), rdv.getHeure());
+        typeColumn.setCellValueFactory(new PropertyValueFactory<RendezVous, String>("type"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<RendezVous, Date>("date"));
+        heureColumn.setCellValueFactory(new PropertyValueFactory<RendezVous, Time>("heure"));
 
+        List<RendezVous> rendezVousList = dossier.getRendezVous();
 
-            observableList.add(rendezvous);
-            System.out.println(rdv.getDate());
-        }
+        ObservableList<RendezVous> observableList = FXCollections.observableArrayList(rendezVousList);
         rendezVousTable.setItems(observableList);
-
     }
+    public void initialize() {
+        dossierButton.setOnAction(event -> showModifierDossierDialog());
+    }
+    @FXML
+    private void showModifierDossierDialog() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("ModifierDossier.fxml"));
+            DialogPane dialogPane = loader.load();
+
+            ModifierDossierController controller = loader.getController();
+            controller.setDossier(currentDossier); // Passer le dossier actuel au contrôleur du dialogue
+
+            Dialog dialog = new Dialog<>();
+            dialog.setDialogPane(dialogPane);
+//            dialog.initModality(Modality.APPLICATION_MODAL);
+//            dialog.initStyle(StageStyle.UNDECORATED);
+            dialog.showAndWait().ifPresent(response -> {
+                controller.handleSave();
+                //si l'utilisateur appuie sur le bouton apply on ajoute le patient a la liste
+                if (response == ButtonType.APPLY) {
+                    System.out.println("handle save");
+                    System.out.println("handle save");
 
 
+                } else if (response == ButtonType.CANCEL) {
+                    //si l'utilisateur appuie sur le bouton cancel on affiche un message
+
+                    System.out.println("Cancel button pressed");
+                }
+            });
+           //  controller.handleSave();
+            // Après la fermeture du dialogue, mettre à jour les informations affichées
+            displayDossier(currentDossier);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
