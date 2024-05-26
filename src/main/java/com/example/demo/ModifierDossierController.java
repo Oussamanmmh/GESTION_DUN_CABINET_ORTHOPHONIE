@@ -66,7 +66,7 @@ public class ModifierDossierController {
 
         // Conversion de la date de naissance en LocalDate
         if (patient.getDateNaissance() != null) {
-            LocalDate dateNaissance = patient.getDateNaissance().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            LocalDate dateNaissance = patient.getDateNaissance();
             dateNaissancePicker.setValue(dateNaissance);
         }
 
@@ -108,7 +108,7 @@ public class ModifierDossierController {
         // Conversion de la LocalDate en Date
         LocalDate dateNaissance = dateNaissancePicker.getValue();
         if (dateNaissance != null) {
-            Date dateNaissanceDate = Date.from(dateNaissance.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            LocalDate dateNaissanceDate = dateNaissancePicker.getValue(); ;
             patient.setDateNaissance(dateNaissanceDate);
         }
 

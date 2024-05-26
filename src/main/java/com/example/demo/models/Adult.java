@@ -1,12 +1,13 @@
 package com.example.demo.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Adult extends Patient {
     private String diplome ;
     private String profession ;
     private String numTel ;
-    public Adult (String nom , String prenom , String adress , Date dateDeNaissance , String lieuDeNaissance , String diplome , String profession , String numTel)
+    public Adult (String nom , String prenom , String adress , LocalDate dateDeNaissance , String lieuDeNaissance , String diplome , String profession , String numTel)
     {
         super(nom , prenom , dateDeNaissance , lieuDeNaissance , adress);
         this.diplome = diplome ;
@@ -38,13 +39,13 @@ public class Adult extends Patient {
     {
         return this.lieuNaissance ;
     }
-    public Date getDateNaissance()
+    public LocalDate getDateNaissance()
     {
         return this.dateNaissance ;
     }
 
     @Override
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         super.setDateNaissance(dateNaissance);
     }
 

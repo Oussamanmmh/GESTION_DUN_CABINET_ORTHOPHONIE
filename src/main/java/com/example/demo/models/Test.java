@@ -1,6 +1,6 @@
 package com.example.demo.models;
 
-import java.util.Set;
+import java.util.List;
 
 public abstract class Test { //la note de test comprise entre 1 et 10
     protected String nom ;
@@ -22,7 +22,7 @@ public abstract class Test { //la note de test comprise entre 1 et 10
         this.nom = nom;
     }
     public abstract String getNom();
-    public abstract Set<Question2> getQuestions();
+    public abstract List<Question2> getQuestions();
     public abstract void  ajouterQuestion(Question2 question);
 
     public void setCapacite(String capacite) {

@@ -66,7 +66,7 @@ public class AgendaController implements Initializable {
     @FXML
     Button ajouterObs;
     @FXML
-    Button retourButton ;
+    Button retourButton;
 
     TextField numDeDossier = new TextField();
     private Label label = new Label();
@@ -335,6 +335,14 @@ public class AgendaController implements Initializable {
                         return;
                     }
                     Suivi suivi = new Suivi(choiceBox.getValue(), parseInt(numDeDossier.getText()), date, temp);
+                    DossierPatient dossierPatient = rechDossier(parseInt(numDeDossier.getText()));
+                    if (dossierPatient == null) {
+                        alertDisplay("Le dossier n'existe pas");
+                        return;
+                    }else {
+                        dossierPatient.ajouterRendezVous(suivi);
+                    }
+
                     try {
 
                         HelloApplication.agendaIntegre.addRendezVous(suivi);
@@ -355,6 +363,7 @@ public class AgendaController implements Initializable {
                         System.out.println("la date" + datePicker.getValue());
                         System.out.println("l'heure" + hours.getValue() + ":" + minutes.getValue() + " " + time.getValue());
                         Atelier atelier = new Atelier(datePicker.getValue().toString(), temp, thematiqueField.getText(), numeroDossiers);
+                        ajouterAtelierDossier(atelier , numeroDossiers);
                         System.out.println("les numeor des doossie" + numeroDossiers.toString());
                         HelloApplication.agendaIntegre.addRendezVous(atelier);
                         list.add(atelier);
@@ -365,6 +374,20 @@ public class AgendaController implements Initializable {
                     }
 
                     break;
+            }
+        }
+    }
+
+    private void ajouterAtelierDossier(Atelier atelier, List<Integer> numeroDossiers) {
+
+        for(DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList())
+        {
+            for(Integer num : numeroDossiers)
+            {
+                if(dossierPatient.getNumeroDossier() == num)
+                {
+                    dossierPatient.ajouterRendezVous(atelier);
+                }
             }
         }
     }
@@ -539,6 +562,9 @@ public class AgendaController implements Initializable {
                     //appliquer l'action du bouton apply
                     dlg.applyButtonAction();
                     DossierPatient dossierPatient = new DossierPatient(dlg.getPatient());
+                    dossierPatient.ajouterRendezVous(selectedRendezVous);
+                    System.out.println("you are here");
+                    pageSuivant(dossierPatient);
                     HelloApplication.orthophoniste.ajouterDossierPatient(dossierPatient);
 
 
@@ -556,7 +582,22 @@ public class AgendaController implements Initializable {
 
 
     }
-    public void retourButton (ActionEvent event){
+
+    private void pageSuivant(DossierPatient dossierPatient) {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("SelectTests.fxml"));
+        try {
+            Scene scene = new Scene(fxmlLoader.load());
+            SelectTestsController controller = fxmlLoader.getController();
+            controller.initialize(dossierPatient);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void retourButton(ActionEvent event) {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePage.fxml"));
 
         try {
@@ -572,6 +613,18 @@ public class AgendaController implements Initializable {
             System.out.println("Il ya une erreur");
         }
     }
+
+    public DossierPatient rechDossier(int numDossier) {
+        DossierPatient dossierPatientCourrant = null;
+        for (DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList()) {
+            if (dossierPatient.getNumeroDossier() == numDossier) {
+                System.out.println("le dossier est trouve");
+                dossierPatientCourrant = dossierPatient;
+            }
+        }
+        return dossierPatientCourrant;
+    }
+
 
 
 }

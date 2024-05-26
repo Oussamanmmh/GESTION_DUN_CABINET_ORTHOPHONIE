@@ -2,6 +2,7 @@ package com.example.demo.models;
 
 public class QesrepLibre extends Question2{
     private String reponse ;
+    private String reponsePatient ;
     private final String type = "QUESTION A REPONSE LIBRE" ;
 
     public String getType() {
@@ -21,5 +22,18 @@ public String getReponse() {
     @Override
     public String getEnonce() {
         return enonce;
+    }
+
+    public void setReponsePatient(String userAnswer) {
+        this.reponsePatient = userAnswer;
+    }
+    public String getReponsePatient() {
+        return reponsePatient;
+    }
+    public void setReponse(String reponse) {
+        this.reponse = reponse;
+    }
+    public void setEnonce(String enonce) {
+        this.enonce = enonce;
     }
 }

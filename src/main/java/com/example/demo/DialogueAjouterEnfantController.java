@@ -46,7 +46,7 @@ public class DialogueAjouterEnfantController implements Initializable {
         }
 
         System.out.println("nom" + nomField.getText() + "data" + dateField.getValue());
-        patient = new Enfant(nomField.getText(), prenomField.getText(), adressField.getText(), Date.from(dateField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()), lieuField.getText(),  etudeField.getText(), numField.getText(),contactField.getText());
+        patient = new Enfant(nomField.getText(), prenomField.getText(), adressField.getText(),dateField.getValue(), lieuField.getText(),  etudeField.getText(), numField.getText(),contactField.getText());
 
 
     }

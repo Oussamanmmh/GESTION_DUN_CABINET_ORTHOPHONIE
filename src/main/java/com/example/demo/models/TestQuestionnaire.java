@@ -1,17 +1,19 @@
 package com.example.demo.models;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public  class TestQuestionnaire extends Test {
-    protected Set<Question2> questions;
+    protected List<Question2> questions;
 
-    public TestQuestionnaire (String nom , Set<? extends Question2> questions) {
+    public TestQuestionnaire (String nom , List<? extends Question2> questions) {
         super(nom);
-        this.questions = new HashSet<>(questions)  ;
+        this.questions = new ArrayList<>(questions);
     }
 
-    public Set<Question2> getQuestions() {
+    public List<Question2> getQuestions() {
         return questions;
     }
 

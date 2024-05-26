@@ -82,6 +82,20 @@ public class Orthophoniste {
     {
         return this.dossierPatientList ;
     }
+    public void suppDossierPatient(DossierPatient dossier)
+    {
+        this.dossierPatientList.remove(dossier) ;
+    }
 
+
+    public List<Patient> getPatients()
+    {
+        List<Patient> patients = new ArrayList<>() ;
+        for(DossierPatient dossier : dossierPatientList)
+        {
+            patients.add(dossier.getPatient()) ;
+        }
+        return patients ;
+    }
 
 }

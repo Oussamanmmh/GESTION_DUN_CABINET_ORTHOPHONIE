@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ButtonType?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<DialogPane fx:id="dialogPane" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #f0f8ff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.ModifierDossierController">
+    <graphic>
+        <GridPane alignment="CENTER" prefHeight="300.0" prefWidth="360.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="220.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            </rowConstraints>
+            <children>
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nom:" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="nomField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Prenom:" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="prenomField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Date de Naissance:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <DatePicker fx:id="dateNaissancePicker" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Lieu de Naissance:" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="lieuNaissanceField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+
+                <Label style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Adresse:" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="adresseField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+
+                <Label fx:id="diplome_Label" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Diplome:" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="diplomeField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+
+                <Label fx:id="proffession_Label" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Profession:" GridPane.columnIndex="0" GridPane.rowIndex="6">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="professionField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+
+                <Label fx:id="num_Label" style="-fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Numéro Tel:" GridPane.columnIndex="0" GridPane.rowIndex="7">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="numTelField" style="-fx-background-color: white; -fx-border-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            </children>
+        </GridPane>
+    </graphic>
+    <buttonTypes>
+        <ButtonType fx:id="applyButtonType" text="Apply"   />
+        <ButtonType fx:id="cancelButtonType" text="Cancel" />
+    </buttonTypes>
+</DialogPane>

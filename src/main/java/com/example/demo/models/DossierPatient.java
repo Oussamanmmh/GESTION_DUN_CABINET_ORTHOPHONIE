@@ -35,6 +35,8 @@ public class DossierPatient {
         nbDossier++;
         this.numeroDossier =nbDossier;
         this.patient = patient;
+        patient.setNumeroDossier(nbDossier);
+
 
     }
 
@@ -68,5 +70,8 @@ public class DossierPatient {
 
     public List<BilanOrt> getBilanOrt() {
         return this.bilanOrt;
+    }
+    public void ajouterBilanOrt(BilanOrt bilanOrt) {
+        this.bilanOrt.add(bilanOrt);
     }
 }

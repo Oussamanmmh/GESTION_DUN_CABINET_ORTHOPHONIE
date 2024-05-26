@@ -2,7 +2,6 @@ package com.example.demo.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class TestExercice extends Test {
     //test exercice contient list des exercices
@@ -44,8 +43,12 @@ public class TestExercice extends Test {
     }
 
     @Override
-    public Set<Question2> getQuestions() {
+    public List<Question2> getQuestions() {
         return null;
+    }
+
+    public void setExercices(List<Exercice> exercices) {
+        this.exercices = exercices;
     }
 
     @Override

@@ -37,4 +37,7 @@ public class Qcu extends  Question2{
     public String getEnonce() {
         return enonce;
     }
+    public void setReponsePatient(String reponsePatient){
+        this.reponsePatient = reponsePatient ;
+    }
 }

@@ -11,38 +11,43 @@ import java.util.*;
 public class qcmController {
 
     @FXML
-    private VBox questionContainer;
+     VBox questionContainer;
     @FXML
-    private Button repondreButton;
+     Button repondreButton;
     @FXML
-    private Button precedentButton;
+     Button precedentButton;
     @FXML
-    private Button suivantButton;
+     Button suivantButton;
     @FXML
-    private Label nomTestLabel;
+     Label nomTestLabel;
     @FXML
-    private Label testIndexLabel;
+     Label testIndexLabel;
 
     // Map pour stocker les CheckBox associées à chaque question
-    private Map<Question, List<CheckBox>> questionCheckBoxes = new HashMap<>();
+    private Map<Question2, List<CheckBox>> questionCheckBoxes = new HashMap<>();
     // Map pour stocker les RadioButton associées à chaque question QCU
-    private Map<Question, ToggleGroup> questionRadioButtons = new HashMap<>();
+    private Map<Question2, ToggleGroup> questionRadioButtons = new HashMap<>();
     // Map pour stocker les TextField associées à chaque question libre
-    private Map<Question, TextField> questionTextFields = new HashMap<>();
+    private Map<Question2, TextField> questionTextFields = new HashMap<>();
 
     private List<Test> tests = new ArrayList<>();
+    private Anamnese anamnese ;
     private int currentTestIndex = 0;
 
     private BilanOrt bilanOrt;
+    private DossierPatient dossierPatientCourant;
 
     public void setBilanOrt(BilanOrt bilanOrt) {
         this.bilanOrt = bilanOrt;
     }
 
     @FXML
-    public void initialize() {
+    public void initialize(DossierPatient dossierPatientCourant) {
         // Simuler la récupération des tests depuis une source de données
+        this.dossierPatientCourant = dossierPatientCourant;
         tests = getTestList();
+        anamnese = getAnamnese();
+
 
         // Afficher le premier test
         displayTest(tests.get(currentTestIndex));
@@ -53,14 +58,16 @@ public class qcmController {
         suivantButton.setOnAction(event -> showNextTest());
     }
 
-    private List<Test> getTestList() {
-        // Exemple de tests pour démonstration
-        Test test1 = new TestQuestionnaire("Test 1", "capacite 1", getQcmList());
-        Test test2 = new TestQuestionnaire("Test 2", "capacite 1", getQcmList());
-        return Arrays.asList(test1, test2);
+    private Anamnese getAnamnese() {
+        return dossierPatientCourant.getBilanOrt().getLast().getAnamnese();
     }
 
-    private List<Question> getQcmList() {
+    private List<Test> getTestList() {
+
+        return dossierPatientCourant.getBilanOrt().getLast().getEpreuvesCliniques().getLast().getTests();
+    }
+
+    private List<Question2> getQcmList() {
         // Exemple de questions QCM, QCU et libres statiques pour démonstration
         Qcm qcm1 = new Qcm("Question à choix multiple 1:",
                 Arrays.asList("Réponse une", "Réponse deux", "Réponse trois"),
@@ -70,7 +77,7 @@ public class qcmController {
                 Arrays.asList("Réponse A", "Réponse B", "Réponse C"),
                 "Réponse B");
 
-        QesrepLibre ql1 = new QesrepLibre("Question libre 1:");
+        QesrepLibre ql1 = new QesrepLibre("Question libre 1:" , "dssd");
 
         return Arrays.asList(qcm1, qcu1, ql1);
     }
@@ -82,8 +89,8 @@ public class qcmController {
         displayQuestions(test.getQuestions());
     }
 
-    private void displayQuestions(List<Question> questions) {
-        for (Question question : questions) {
+    private void displayQuestions(List<Question2> questions) {
+        for (Question2 question : questions) {
             Label questionLabel = new Label(question.getEnonce());
             questionLabel.setStyle("-fx-text-fill: #4682b4; -fx-font-size: 18px; -fx-font-weight: bold;");
             questionContainer.getChildren().add(questionLabel);
@@ -130,9 +137,9 @@ public class qcmController {
         }
     }
 
-    private void handleRepondreButton(List<Question> questions) {
+    private void handleRepondreButton(List<Question2> questions) {
         boolean hasError = false;
-        for (Question question : questions) {
+        for (Question2 question : questions) {
             if (question instanceof Qcm) {
                 List<CheckBox> checkBoxes = questionCheckBoxes.get(question);
                 boolean isAnySelected = checkBoxes.stream().anyMatch(CheckBox::isSelected);

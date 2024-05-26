@@ -50,7 +50,7 @@ public class DialogueAjouterPatientController implements Initializable {
             }
 
             System.out.println("nom"+nomField.getText() + "data"+dateField.getValue());
-            patient = new Adult(nomField.getText(),prenomField.getText(),adressField.getText(), Date.from(dateField.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()) ,lieuField.getText(),diplomeField.getText(),professionField.getText(),contactField.getText());
+            patient = new Adult(nomField.getText(),prenomField.getText(),adressField.getText(), dateField.getValue() ,lieuField.getText(),diplomeField.getText(),professionField.getText(),contactField.getText());
 
 
     }

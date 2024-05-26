@@ -1,6 +1,7 @@
 package com.example.demo;
 import com.example.demo.models.*;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
@@ -21,70 +22,49 @@ public class HelloApplication extends Application {
     public static ApplicationDesktop applicationDesktop ;
     public static Orthophoniste orthophoniste ;
     public static AgendaIntegre agendaIntegre ;
-    public static AnamneseEnfant anamneseEnfant ;
+
     public static List<Anamnese>  anamnese = new ArrayList<>();
-    public static AnamneseAdult anamneseAdult ;
+
     public static EpreuveClinique epreuveClinique ;
 
 
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("HomePage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Agenda.fxml"));
         applicationDesktop = new ApplicationDesktop();
         orthophoniste = new Orthophoniste("oussama" , "nemamcha" , "admin" , "alger","093892", "123") ;
         agendaIntegre = new AgendaIntegre();
         applicationDesktop.setOrthophoniste(orthophoniste);
-        //On va creer des question pour test ;
-        //avec categhor
 
-        QuestionAnamEnfant q1 = new QuestionAnamEnfant( "question sur l enfant" , CathegoriesEnf.ANTYCIDENT_FAMILIALE) ;
-        QuestionAnamEnfant q2 = new QuestionAnamEnfant( "question sur l enfant" , CathegoriesEnf.ANTYCIDENT_FAMILIALE) ;
-        QuestionAnamEnfant q3 = new QuestionAnamEnfant( "question sur l enfant" , CathegoriesEnf.COMPORTENENT) ;
-        QuestionAnamEnfant q4 = new QuestionAnamEnfant( "question sur l enfant" , CathegoriesEnf.COMPORTENENT) ;
+        QuestionAnamEnfant q1 = new QuestionAnamEnfant("Qui vit avec l'enfant à la maison ?",CathegoriesEnf.STRUCTURE_FAMILIALE);
+        QuestionAnamEnfant q2 = new QuestionAnamEnfant("Quelle est la relation de l'enfant avec les autres membres de la famille ?",CathegoriesEnf.DYNAMIQUE_FAMILIALE);
+        QuestionAnamEnfant q3 = new QuestionAnamEnfant("L'enfant a-t-il déjà été hospitalisé ?",CathegoriesEnf.ANTYCIDENT_FAMILIALE);
+        QuestionAnamEnfant q4 = new QuestionAnamEnfant("L'enfant est-il né à terme ?",CathegoriesEnf.CONDITION_NATALE);
+        AnamneseEnfant anamneseEnfant = new AnamneseEnfant(Arrays.asList(q1,q2,q3,q4));
 
-        anamneseEnfant = new AnamneseEnfant(Arrays.asList(q1,q2,q3,q4)) ;
-
-
-        //on va creer des question pour tester pour adult
-
-        QuestionAnamAdult q5 = new QuestionAnamAdult( "question sur l adulte" , CathegorieAdult.HISTOIRE_MALADIE) ;
-        QuestionAnamAdult q6 = new QuestionAnamAdult( "question sur l adulte" , CathegorieAdult.HISTOIRE_MALADIE) ;
-        QuestionAnamAdult q7 = new QuestionAnamAdult( "question sur l adulte" , CathegorieAdult.SUIVI_MEDICAL) ;
-        anamneseAdult = new AnamneseAdult(Arrays.asList(q5,q6,q7)) ;
-        for(QuestionAnamAdult q : anamneseAdult.getQuestions()){
-            System.out.println(q.getEnonce());
-        }
+        QuestionAnamAdult q5 = new QuestionAnamAdult("Quelles maladies avez-vous eues dans le passé ?",CathegorieAdult.HISTOIRE_MALADIE);
+        QuestionAnamAdult q6 = new QuestionAnamAdult("Avez-vous un médecin généraliste régulier ?",CathegorieAdult.SUIVI_MEDICAL);
+        AnamneseAdult anamneseAdult = new AnamneseAdult(Arrays.asList(q5,q6));
         anamnese.addAll(Arrays.asList(anamneseEnfant,anamneseAdult));
 
-        epreuveClinique = new EpreuveClinique();
+        Qcm qcm1 = new Qcm("Quelle est la capitale de la France ?", FXCollections.observableArrayList("Paris", "Londres", "Berlin", "Madrid"), Arrays.asList("Paris"));
+        Qcm qcm2 = new Qcm("Quelle est la capitale de l'Espagne ?", FXCollections.observableArrayList("Paris", "Londres", "Berlin", "Madrid"), Arrays.asList("Madrid"));
+        Qcu qcu1 = new Qcu("Quelle est la capitale de l'Allemagne ?", FXCollections.observableArrayList("Paris", "Londres", "Berlin", "Madrid"), "Berlin");
+        Qcu qcu2 = new Qcu("Quelle est la capitale de l'Italie ?", FXCollections.observableArrayList("Paris", "Londres", "Rome", "Madrid"), "Rome");
+        QesrepLibre qesrepLibre1 = new QesrepLibre("Quelle est la capitale de la Belgique ?", "Bruxelles");
+        QesrepLibre qesrepLibre2 = new QesrepLibre("Quelle est la capitale du Maroc ?", "Rabat");
+        Exercice exo1 = new Exercice("Exercice 01 ", "Faites une phrase avec les mots suivants : chien, chat, souris", "Papier, stylo");
+        Exercice exo2 = new Exercice("Exercice 02", "Faites une phrase avec les mots suivants : voiture, vélo, moto", "Papier, stylo");
+        Test testExercice = new TestExercice("Test de français", Arrays.asList(exo1, exo2));
+        Test testQuestionnaire = new TestQuestionnaire("Test de géographie", Arrays.asList(qcm1, qcm2, qcu1, qcu2, qesrepLibre1, qesrepLibre2));
 
-        Qcm qcm1 = new Qcm("question 1", Arrays.asList("reponse1", "reponse2", "reponse3"), Arrays.asList("reponse1", "reponse2"));
-        Qcm qcm2 = new Qcm("question 2", Arrays.asList("reponse1", "reponse2", "reponse3"), Arrays.asList("reponse1", "reponse2"));
-        Qcm qcm3 = new Qcm("question 3", Arrays.asList("reponse1", "reponse2", "reponse3"), Arrays.asList("reponse1", "reponse2"));
-        Qcu qcu1 = new Qcu("question 4", Arrays.asList("reponse1", "reponse2", "reponse3"), "reponse1");
-        Qcu qcu2 = new Qcu("question 5", Arrays.asList("reponse1", "reponse2", "reponse3"), "reponse1");
-        Qcu qcu3 = new Qcu("question 6", Arrays.asList("reponse1", "reponse2", "reponse3"), "reponse1");
-        QesrepLibre qesrepLibre = new QesrepLibre("question 7", "reponse libre");
-        QesrepLibre qesrepLibre1 = new QesrepLibre("question 8", "reponse libre");
-        QesrepLibre qesrepLibre2 = new QesrepLibre("question 9", "reponse libre");
-        QesrepLibre qesrepLibre3 = new QesrepLibre("question 10", "reponse libre");
-        Exercice exo1 = new Exercice("exo1", "consign1" , "nomM1");
-        Exercice exo2 = new Exercice("exo2", "consign2" , "nomM2");
-        Exercice exo3 = new Exercice("exo3", "consign3", "nomM3");
-        Set<Qcm> qcmSet = new HashSet<>(Arrays.asList(qcm1, qcm2, qcm3));
-        Set<Qcu> qcuSet = new HashSet<>(Arrays.asList(qcu1, qcu2, qcu3));
-        Set<QesrepLibre> qesrepLibreSet = new HashSet<>(Arrays.asList(qesrepLibre, qesrepLibre1, qesrepLibre2, qesrepLibre3));
-        TestQuestionArepLibre testQuestionArepLibre = new TestQuestionArepLibre("test Q", qesrepLibreSet);
-        TestExercice testExercice = new TestExercice("test exo", Arrays.asList(exo1, exo2, exo3));
-        TestQCM testQcm = new TestQCM("test qcm", qcmSet);
-        TestQCU testQcu = new TestQCU("test qcu", qcuSet);
-
-        epreuveClinique.ajouterTest(testQcm);
-        epreuveClinique.ajouterTest(testQcu);
-        epreuveClinique.ajouterTest(testQuestionArepLibre);
+     epreuveClinique = new EpreuveClinique();
         epreuveClinique.ajouterTest(testExercice);
-        System.out.println("le nom de tst est"+testQuestionArepLibre.getNom());
+        epreuveClinique.ajouterTest(testQuestionnaire);
+
+
+
 
         Scene scene = new Scene(fxmlLoader.load());
 

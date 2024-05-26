@@ -55,10 +55,12 @@ public class AnamnesTestController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        listDesEpreuvesCliniques.addAll(HelloApplication.epreuveClinique.getTests());
+
 
         // listaname.addAll(HelloApplication.anamneseAdult, HelloApplication.anamneseEnfant);
         listaname.addAll(HelloApplication.anamnese);
-        listDesEpreuvesCliniques.addAll(HelloApplication.epreuveClinique.getTests());
+       //  listDesEpreuvesCliniques.addAll(HelloApplication.epreuveClinique.getTests());
 
         buttonaname.setStyle("-fx-background-color: #ffffff");
         buttonaname.setOnAction(e -> {
@@ -81,6 +83,7 @@ public class AnamnesTestController implements Initializable {
         catg.setCellValueFactory(new PropertyValueFactory<>("cathegorie"));
 
     }
+
 
     private void ajouterTestAnam() {
         Dialog<Anamnese> dialog = new Dialog<>();
@@ -225,7 +228,7 @@ public class AnamnesTestController implements Initializable {
                     ((AnamneseEnfant) a).addQuestion((QuestionAnamEnfant) q);
                     tabledetails.getItems().add(q);
                 }
-                listaname.addAll(HelloApplication.anamneseAdult, HelloApplication.anamneseEnfant);
+                listaname.addAll(HelloApplication.anamnese);
                 //tabledetails.getItems().clear();
 
             }
@@ -460,7 +463,6 @@ public class AnamnesTestController implements Initializable {
         GridPane grid = new GridPane();
         grid.setHgap(20);
         grid.setVgap(20);
-        dialog.setWidth(300);
         grid.add(new Label("Type:"), 0, 0);
         grid.add(typeChoiceBox, 1, 0);
         dialog.getDialogPane().setContent(grid);
@@ -786,7 +788,7 @@ public class AnamnesTestController implements Initializable {
             dialog.getDialogPane().getButtonTypes().addAll(applyButtonType, cancelButtonType);
             dialog.setResultConverter(dialogButton -> {
                 if (dialogButton == applyButtonType) {
-                    Set<Question2> vide = new HashSet<>();
+                   List<Question2> vide = new ArrayList<>();
                     TestQuestionnaire testQuestionnaire = new TestQuestionnaire(nomField.getText(), vide);
                     HelloApplication.epreuveClinique.ajouterTest(testQuestionnaire);
                     listDesEpreuvesCliniques.add(testQuestionnaire);
@@ -798,6 +800,22 @@ public class AnamnesTestController implements Initializable {
             dialog.showAndWait();
         }
 
+
+//    private List <Test> genereLesEpreuvesCliniques() {
+//        Qcm qcm1 = new Qcm("Quelle est la capitale de la France ?", FXCollections.observableArrayList("Paris", "Londres", "Berlin", "Madrid"), FXCollections.observableArrayList("Paris"));
+//        Qcm qcm2 = new Qcm("Quelle est la capitale de l'Espagne ?", FXCollections.observableArrayList("Paris", "Londres", "Berlin", "Madrid"), FXCollections.observableArrayList("Madrid"));
+//        Qcu qcu1 = new Qcu("Quelle est la capitale de l'Allemagne ?", FXCollections.observableArrayList("Paris", "Londres", "Berlin", "Madrid"), "Berlin");
+//        Qcu qcu2 = new Qcu("Quelle est la capitale de l'Italie ?", FXCollections.observableArrayList("Paris", "Londres", "Rome", "Madrid"), "Rome");
+//        QesrepLibre qesrepLibre1 = new QesrepLibre("Quelle est la capitale de la Belgique ?", "Bruxelles");
+//        QesrepLibre qesrepLibre2 = new QesrepLibre("Quelle est la capitale du Maroc ?", "Rabat");
+//        Exercice exo1 = new Exercice("Exercice 1", "Faites une phrase avec les mots suivants : chien, chat, souris", "Papier, stylo");
+//        Exercice exo2 = new Exercice("Exercice 2", "Faites une phrase avec les mots suivants : voiture, vélo, moto", "Papier, stylo");
+//        Test testExercice = new TestExercice("Test de français", FXCollections.observableArrayList(exo1, exo2));
+//        TestQuestionnaire testQuestionnaire = new TestQuestionnaire("Test de géographie", FXCollections.observableArrayList(qcm1, qcm2, qcu1, qcu2, qesrepLibre1, qesrepLibre2));
+//        List<Test> tests = FXCollections.observableArrayList(testExercice, testQuestionnaire);
+//    return tests ;
+//
+//    }
 
 
 }

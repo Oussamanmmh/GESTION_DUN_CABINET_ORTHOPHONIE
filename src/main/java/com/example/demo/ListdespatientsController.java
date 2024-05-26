@@ -17,6 +17,8 @@ import javafx.collections.FXCollections;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -81,21 +83,27 @@ public class ListdespatientsController implements Initializable {
         stage.show();
     }
 
-
-    ObservableList<Patient> list = FXCollections.observableArrayList( //la liste des patients adult par defaut
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("mouhamed", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892")
-    );
+ObservableList<Patient> list = FXCollections.observableArrayList();
+//    ObservableList<Patient> list = FXCollections.observableArrayList( //la liste des patients adult par defaut
+////new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("mouhamed", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
+//            new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892")
+//    );
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) { //methode pour initialiser le controller
+
+        Patient p = new Adult("ilyr", "nemkkhj", "alger", LocalDate.parse("1999-2-9"), "alger", "licence", "etudiant", "093892");
+
+        DossierPatient dossierPatient = new DossierPatient(p);
+        list.add(p);
+        HelloApplication.orthophoniste.ajouterDossierPatient(dossierPatient);
 
         MychoiceBox.getItems().addAll(choix); //ajouter les choix possibles au choixBox(adulte , enfant)
 
@@ -144,19 +152,37 @@ public class ListdespatientsController implements Initializable {
 
     private void voirDetailsPatient(Patient patient) {
         int numDossier = patient.getNumeroDossier();
-        DossierPatient dossierCourant ;
+        DossierPatient dossierCourant = null ;
         for(DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList())
         {
             if(dossierPatient.getNumeroDossier()==numDossier)
             {
+                System.out.println("dossier trouve :"+dossierPatient.getNumeroDossier());
                 dossierCourant = dossierPatient ;
             }
         }
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("DossierPatient.fxml"));
+         //to be continue
+       // DossierPatientController controller = fxmlLoader.getController();
+
+       // controller.setCurrentDossier(dossierCourant);
+        try {
+
+            scene = new Scene(fxmlLoader.load());
+            DossierPatientController controller = fxmlLoader.getController();
+            controller.setCurrentDossier(dossierCourant);
+            controller.initialize(dossierCourant);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("erreur");
+        }
 
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource(".fxml"));
-        //to be continue
-
+        stage = new Stage();
+        stage.setTitle("Dossier Patient");
+        stage.setScene(scene);
+        stage.show();
 
     }
 
@@ -185,6 +211,8 @@ public class ListdespatientsController implements Initializable {
                     DialogueAjouterPatientController dlg = fxmlLoader.getController();
                         //appliquer l'action du bouton apply
                         dlg.applyButtonAction();
+                        DossierPatient dossierPatient = new DossierPatient(dlg.getPatient());
+                        HelloApplication.orthophoniste.ajouterDossierPatient(dossierPatient);
                         //ajouter le patient a la liste
                         list.add(dlg.getPatient());
                         //afficher la liste des patients
@@ -230,7 +258,16 @@ public class ListdespatientsController implements Initializable {
                     System.out.println("OK button pressed");
                     //recuperer l'index du patient selectionne
                     int index = tablePatient.getSelectionModel().getSelectedIndex();
-                    System.out.println("index = " + index);
+                    Patient selectedPatient = tablePatient.getSelectionModel().getSelectedItem();
+                    for(DossierPatient dossierPatient : HelloApplication.orthophoniste.getDossierPatientList())
+                    {
+                        if(dossierPatient.getPatient().equals(selectedPatient))
+                        {
+                            HelloApplication.orthophoniste.getDossierPatientList().remove(dossierPatient);
+                            break;
+                        }
+                    }
+                   // System.out.println("index = " + index);
                     //supprimer le patient de la liste
 
                     list.remove(index);
@@ -259,15 +296,16 @@ public class ListdespatientsController implements Initializable {
             profession.setCellValueFactory(new PropertyValueFactory<Patient, String>("profession"));
             diplome.setCellValueFactory(new PropertyValueFactory<Patient, String>("diplome"));
             tel.setCellValueFactory(new PropertyValueFactory<Patient, String>("numTel"));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             list = FXCollections.observableArrayList(
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("mouhamed", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892"),
-                    new Adult("oussama", "nemamcha", "alger", new Date(), "alger", "licence", "etudiant", "093892")
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("mouhamed", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892"),
+                    new Adult("oussama", "nemamcha", "alger", LocalDate.parse("2022-12-12",formatter), "alger", "licence", "etudiant", "093892")
             );
             //afficher la liste des patients
             tablePatient.setItems(list);
@@ -283,7 +321,7 @@ public class ListdespatientsController implements Initializable {
             diplome.setCellValueFactory(new PropertyValueFactory<Patient, String>("classdetude"));
             tel.setCellValueFactory(new PropertyValueFactory<Patient, String>("numTelpere"));
             list = FXCollections.observableArrayList(
-                    new Enfant("oussama", "nemamcha", "alger", new Date(), "guelma", "licence", "32321", "093892")
+                    new Enfant("oussama", "nemamcha", "alger",LocalDate.parse("1990-21-12"), "guelma", "licence", "32321", "093892")
 
             );
             //afficher la liste des patients

@@ -1,5 +1,8 @@
 package com.example.demo.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Exercice   {
 
     // class d'un exercice
@@ -7,8 +10,10 @@ public class Exercice   {
     private String consigne;
 
     private String nomMateriel;
-
+   private List<Integer> notes = new ArrayList<>();
     private int score;
+
+
 
     public String getNom()
     {
@@ -42,6 +47,19 @@ public class Exercice   {
     }
     public String getConsigne(){
         return this.consigne;
+    }
+    public void setConsigne(String consigne){
+        this.consigne = consigne;
+    }
+    public void ajouterNote (int note)
+
+    {
+
+        notes.add(note);
+    }
+    public List<Integer> getNotes()
+    {
+        return notes;
     }
 
 }

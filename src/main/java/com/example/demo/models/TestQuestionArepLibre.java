@@ -1,12 +1,13 @@
 package com.example.demo.models;
 
+import java.util.List;
 import java.util.Set;
 
 public class TestQuestionArepLibre extends TestQuestionnaire{
 
 
 
-    public TestQuestionArepLibre(String nom , Set<? extends Question2> questions) {
+    public TestQuestionArepLibre(String nom , List<? extends Question2> questions) {
         super(nom , questions);
 
     }

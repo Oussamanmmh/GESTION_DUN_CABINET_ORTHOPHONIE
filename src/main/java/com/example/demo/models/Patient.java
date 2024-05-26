@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,7 @@ public abstract class Patient {
     protected String nom;
     protected String prenom;
     protected int numeroDossier;
-    protected Date dateNaissance;
+    protected LocalDate dateNaissance;
 
     protected String lieuNaissance;
     protected String adress;
@@ -19,7 +20,7 @@ public abstract class Patient {
 
     //protected List<BilanOrt> bilansOrt; //liste des bilans orthophoniques sur le patient
 
-   public Patient(String nom, String prenom, Date dateNaissance, String lieuNaissance, String adress) {
+   public Patient(String nom, String prenom, LocalDate dateNaissance, String lieuNaissance, String adress) {
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
@@ -45,7 +46,7 @@ public abstract class Patient {
         return prenom;
     }
 
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
@@ -77,7 +78,7 @@ public abstract class Patient {
         this.prenom = prenom;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
@@ -101,6 +102,9 @@ public abstract class Patient {
 
     public int getNumeroDossier() {
         return numeroDossier;
+    }
+    public void setNumeroDossier(int numeroDossier) {
+        this.numeroDossier = numeroDossier;
     }
 
     public String getDescriptionTherapie() {

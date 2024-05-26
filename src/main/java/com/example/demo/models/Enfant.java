@@ -1,5 +1,6 @@
 package com.example.demo.models;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Enfant extends Patient {
@@ -7,7 +8,7 @@ public class Enfant extends Patient {
     private String numTelmere;
     private String numTelpere;
 
-    public Enfant(String nom, String prenom, String adress, Date dateDeNaissance, String lieuDeNaissance, String classdetude, String numTelmere, String numTelpere) {
+    public Enfant(String nom, String prenom, String adress, LocalDate dateDeNaissance, String lieuDeNaissance, String classdetude, String numTelmere, String numTelpere) {
         super(nom, prenom, dateDeNaissance, lieuDeNaissance, adress);
         this.classdetude = classdetude;
         this.numTelmere = numTelmere;
@@ -71,7 +72,7 @@ public class Enfant extends Patient {
     }
 
     @Override
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         super.setDateNaissance(dateNaissance);
     }
 
@@ -81,7 +82,7 @@ public class Enfant extends Patient {
     }
 
 
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return this.dateNaissance;
     }
 }

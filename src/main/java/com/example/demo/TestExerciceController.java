@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -57,16 +58,16 @@ public class TestExerciceController {
 
     private List<TestExercice> getTestExerciceList() {
         // Exemple de tests pour démonstration
-        TestExercice test1 = new TestExercice("Test Exercice 1", "Capacité 1");
+        TestExercice test1 = new TestExercice("Test Exercice 1", Arrays.asList());
         test1.setExercices(List.of(
-                new Exercice("Exercice 1", "Consigne 1", "Materiel 1", 0),
-                new Exercice("Exercice 2", "Consigne 2", "Materiel 2", 0)
+                new Exercice("Exercice 1", "Consigne 1", "Materiel 1"),
+                new Exercice("Exercice 2", "Consigne 2", "Materiel 2")
         ));
 
-        TestExercice test2 = new TestExercice("Test Exercice 2", "Capacité 2");
+        TestExercice test2 = new TestExercice("Test Exercice 2", Arrays.asList());
         test2.setExercices(List.of(
-                new Exercice("Exercice 3", "Consigne 3", "Materiel 3", 0),
-                new Exercice("Exercice 4", "Consigne 4", "Materiel 4", 0)
+                new Exercice("Exercice 3", "Consigne 3", "Materiel 3"),
+                new Exercice("Exercice 4", "Consigne 4", "Materiel 4")
         ));
 
         return List.of(test1, test2);

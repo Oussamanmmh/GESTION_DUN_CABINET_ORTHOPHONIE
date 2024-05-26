@@ -114,7 +114,10 @@ public class DossierPatientController {
         ObservableList<RendezVous> observableList = FXCollections.observableArrayList(rendezVousList);
         rendezVousTable.setItems(observableList);
     }
-    public void initialize() {
+    public void initialize(DossierPatient currentDossier) {
+        this.currentDossier = currentDossier;
+        System.out.println("initialize"+currentDossier.getNumeroDossier());
+        displayDossier(currentDossier);
         dossierButton.setOnAction(event -> showModifierDossierDialog());
     }
     @FXML
@@ -150,5 +153,8 @@ public class DossierPatientController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void setCurrentDossier(DossierPatient currentDossier) {
+        this.currentDossier = currentDossier;
     }
 }

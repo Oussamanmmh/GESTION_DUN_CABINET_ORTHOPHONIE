@@ -34,4 +34,8 @@ public class Qcm extends Question2{
     public List<String> getReponses() {
         return reponses;
     }
+
+    public void setReponsesPatient(List<String> selectedAnswers) {
+        this.reponsesPatient = new ArrayList<>(selectedAnswers);
+    }
 }

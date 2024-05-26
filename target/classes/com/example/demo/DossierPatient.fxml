@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane prefHeight="400.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.DossierPatientController">
+   <content>
+      <AnchorPane id="DescriptionLabel" prefHeight="600.0" prefWidth="630.0">
+         <children>
+            <ImageView fitHeight="95.0" fitWidth="95.0" layoutX="19.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@assets/images.jpg" />
+               </image>
+            </ImageView>
+            <Label id="NDossierLabel" fx:id="NDossierLabel" layoutX="243.0" layoutY="40.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Numéro du dossier" />
+            <Label id="nomLabel" fx:id="nomLabel" layoutX="166.0" layoutY="72.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Nom" />
+            <Label id="prenomLabel" fx:id="prenomLabel" layoutX="176.0" layoutY="99.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Prenom" />
+            <Label id="dateDeNaissanceLabel" fx:id="dateDeNaissanceLabel" layoutX="131.0" layoutY="143.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Date de Naissance" />
+            <Label id="lieuDeNaissanceLabel" fx:id="lieuDeNaissanceLabel" layoutX="129.0" layoutY="172.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Lieu de Naissance" />
+            <Label id="adresseLabel" fx:id="adresseLabel" layoutX="92.0" layoutY="207.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Adresse" />
+            <Label id="extraInfoLabel" fx:id="extraInfoLabel" layoutX="176.0" layoutY="207.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="" />
+
+            <TableView fx:id="rendezVousTable" layoutX="88.0" layoutY="411.0" prefHeight="175.0" prefWidth="475.0" style="-fx-border-color: lightgray; -fx-table-cell-border-color: transparent; -fx-alternate-row-fill-visible: true; -fx-background-color: #f9f9f9;">
+               <columns>
+                  <TableColumn fx:id="typeColumn" prefWidth="132.66668701171875" style="-fx-alignment: CENTER-LEFT; -fx-background-color: #e1e1e1; -fx-text-fill: black;" text="Type" />
+                  <TableColumn fx:id="dateColumn" prefWidth="189.33331298828125" style="-fx-alignment: CENTER-LEFT; -fx-background-color: #e1e1e1; -fx-text-fill: black;" text="Date" />
+                  <TableColumn fx:id="heureColumn" prefWidth="151.33331298828125" style="-fx-alignment: CENTER-LEFT; -fx-background-color: #e1e1e1; -fx-text-fill: black;" text="Heure" />
+               </columns>
+            </TableView>
+            <Button fx:id="ficheButton" layoutX="106.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: #56c6d0; -fx-effect: dropshadow(gaussian, #56c6d0, 10, 0, 0, 0); -fx-text-fill: white; -fx-font-weight: bold;" text="Fiche du patient">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="billanButton" layoutX="230.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: #56c6d0; -fx-effect: dropshadow(gaussian, #56c6d0, 10, 0, 0, 0); -fx-text-fill: white; -fx-font-weight: bold;" text="Billan du patient">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="dossierButton" layoutX="353.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: #56c6d0; -fx-effect: dropshadow(gaussian, #56c6d0, 10, 0, 0, 0); -fx-text-fill: white; -fx-font-weight: bold;" text="Modifier le dossier">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="retourButton" layoutX="531.0" layoutY="352.0" mnemonicParsing="false" style="-fx-background-color: #FF0000; -fx-effect: dropshadow(gaussian, #FF0000, 10, 0, 0, 0); -fx-text-fill: white; -fx-font-weight: bold;" text="Retour">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Label fx:id="descriptionLabel" layoutX="417.0" layoutY="163.0" prefWidth="200.0" style="-fx-font-size: 12px; -fx-text-fill: #34495e; -fx-background-color: #ecf0f1; -fx-padding: 10px; -fx-border-radius: 5px;" text="Description:" wrapText="true" />
+            <Label layoutX="130.0" layoutY="41.0" text="Numéro du dossier:" />
+            <Label layoutX="130.0" layoutY="73.0" text="Nom:" />
+            <Label layoutX="130.0" layoutY="100.0" text="Prenom:" />
+            <Label layoutX="21.0" layoutY="144.0" text="Date de Naissance:" />
+            <Label layoutX="21.0" layoutY="173.0" text="Lieu de Naissance:" />
+            <Label layoutX="22.0" layoutY="208.0" text="Adresse:" />
+            <Label fx:id="diplome_Label" layoutX="22.0" layoutY="237.0" text="Diplome:" />
+            <Label id="adresseLabel" fx:id="diplomeLabel" layoutX="121.0" layoutY="236.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Diplome" />
+            <Label fx:id="proffession_Label" layoutX="22.0" layoutY="267.0" text="Proffession:" />
+            <Label id="adresseLabel" fx:id="proffessionLabel" layoutX="122.0" layoutY="266.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Proffession" />
+            <Label fx:id="num_Label" layoutX="22.0" layoutY="301.0" text="Numéro Tel:" />
+            <Label id="adresseLabel" fx:id="numLabel" layoutX="125.0" layoutY="300.0" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Numéro" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
